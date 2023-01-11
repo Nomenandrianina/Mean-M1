@@ -30,19 +30,21 @@ export default class LoginComponent {
 
   checkLogin(){
     const onSuccess = (response: any) => {
+      console.log(response);
       if (response.status === 200){
         this.router.navigateByUrl('/');
       }else{
-        this.message = response.message;
+        this.message = response.error.error;
         this.loginForm.reset();
       }
     };
     const onError = (response: any) => {
+      this.message = response.error.error;
       this.loginForm.reset();
     };
     const data = {
       email: this.loginForm.value.email,
-      mdp: this.loginForm.value.mdp
+      password: this.loginForm.value.mdp
     };
     this.authService.login(data).subscribe(onSuccess,onError);
   }

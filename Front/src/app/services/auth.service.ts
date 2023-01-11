@@ -14,7 +14,10 @@ const urlRegistre = baseUrl + 'registre';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient , private router: Router) { }
+  constructor(private http: HttpClient , private router: Router) {
+    this.http = http;
+    this.router = router;
+  }
 
   login(data){
     return this.http.post(urlLogin, data);
