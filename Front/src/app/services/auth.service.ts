@@ -7,7 +7,8 @@ const baseUrl = 'http://localhost:4000/';
 
 const urlLogin = baseUrl + 'login';
 
-const urlRegistre = baseUrl + 'registre';
+
+const urlRegistre = baseUrl + 'signup';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class AuthService {
 
   login(data){
     return this.http.post(urlLogin, data);
+  }
+
+  Inscription(data){
+    return this.http.post(urlRegistre, data);
   }
 
 }
