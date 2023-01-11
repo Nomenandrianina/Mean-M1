@@ -14,6 +14,7 @@
               </div>
             </div>
           </div>
+          <form class="pt-3" (ngSubmit)="checkLogin()" [formGroup]="loginForm"  method="POST">
           <div class="d-grid">
             <button type="button" class="btn mt-2 btn-light-primary bg-light text-muted">
               <img src="assets/images/authentication/google-icon.svg" />Sign In With Google
@@ -24,12 +25,14 @@
           </div>
           <h5 class="my-4 d-flex justify-content-center"> Sign in with Email address </h5>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" value="info@codedthemes.com" />
+            <input type="email" class="form-control" formControlName="email" id="floatingInput" value="info@codedthemes.com" />
             <label for="floatingInput">Email address / Username</label>
+            <span class="error text-danger" *ngIf="email.invalid && (email.dirty || email.touched)" style="color: red">Veuillez-entrez votre email!</span>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="password" value="12345" />
+            <input type="password" class="form-control" formControlName="mdp" id="password" value="12345" />
             <label for="password">Password</label>
+            <span class="error text-danger" *ngIf="mdp.invalid && (mdp.dirty || mdp.touched)" style="color: red" >Veuillez-entrez votre mot de passe!</span>
           </div>
           <div class="d-flex mt-1 justify-content-between">
             <div class="form-check">
@@ -41,8 +44,9 @@
             </h5>
           </div>
           <div class="d-grid mt-4">
-            <button type="button" class="btn btn-secondary">Sign In</button>
+            <button type="submit" class="btn btn-secondary">Sign In</button>
           </div>
+        </form>
           <hr />
           <h5 class="d-flex justify-content-center">
             <a [routerLink]="['/guest/register']">Don't have an account?</a>

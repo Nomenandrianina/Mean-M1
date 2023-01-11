@@ -4,6 +4,7 @@ import { AuthModule } from './auth/auth/auth.module';
 import { MatIconModule } from '@angular/material/icon';
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,7 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     AuthModule,
     BrowserAnimationsModule,
-    MatIconModule 
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
