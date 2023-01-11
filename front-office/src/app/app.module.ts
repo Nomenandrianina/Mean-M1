@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AuthModule } from './auth/auth/auth.module';
-import { MaterialIcon } from 'material-icons';
+import { MatIconModule } from '@angular/material/icon';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     AuthModule,
     BrowserAnimationsModule,
+    MatIconModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
