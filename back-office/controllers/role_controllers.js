@@ -1,6 +1,7 @@
 require("dotenv").config(); // load .env variables
 const { Router } = require("express"); // import router from express
 const Role = require("../models/role"); 
+const db = require("../db/connection");
 
 const router = Router();
 
