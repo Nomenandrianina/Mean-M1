@@ -1,6 +1,7 @@
 // Angular import
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Location, LocationStrategy } from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
 
 // Project import
 import { BerryConfig } from '../../../app-config';
@@ -18,7 +19,8 @@ export class AdminComponent implements OnInit {
   submenuCollapse: boolean;
 
   // Constructor
-  constructor(private zone: NgZone, private location: Location, private locationStrategy: LocationStrategy) {
+  constructor(private zone: NgZone, private location: Location, private locationStrategy: LocationStrategy, private authService: AuthService) {
+    this.authService.isConnected();
     let current_url = this.location.path();
     if (this.location['_baseHref']) {
       current_url = this.location['_baseHref'] + this.location.path();

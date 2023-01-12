@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 // project import
 import { NavigationItem } from '../../navigation';
+import { NavigationClientItem } from '../../navigationclient';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { BerryConfig } from 'src/app/app-config';
 
@@ -23,7 +24,7 @@ import { BerryConfig } from 'src/app/app-config';
 export class NavCollapseComponent implements OnInit {
   // public props
   @Output() toggle: EventEmitter<any> = new EventEmitter();
-  @Input() item!: NavigationItem;
+  @Input() item!: NavigationItem | NavigationClientItem;
 
   visible;
   themeLayout: string;

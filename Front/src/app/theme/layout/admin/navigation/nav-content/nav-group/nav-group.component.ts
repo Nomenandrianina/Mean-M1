@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, NgZone, OnInit, Output } from '@angular
 
 // project import
 import { NavigationItem } from '../../navigation';
+import { NavigationClientItem } from '../../navigationclient';
 import { Location, LocationStrategy } from '@angular/common';
 import { BerryConfig } from '../../../../../../app-config';
 
@@ -13,7 +14,7 @@ import { BerryConfig } from '../../../../../../app-config';
 })
 export class NavGroupComponent implements OnInit {
   // public props
-  @Input() item!: NavigationItem;
+  @Input() item!: NavigationItem | NavigationClientItem;
   @Output() toggle: EventEmitter<any> = new EventEmitter();
 
   // Constructor

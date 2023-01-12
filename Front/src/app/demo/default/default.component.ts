@@ -1,6 +1,7 @@
 // Angular Import
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
 
 // project import
 import { SharedModule } from 'src/app/theme/shared/shared.module';
@@ -56,7 +57,8 @@ export default class DefaultComponent {
   colorChart = ['#673ab7'];
 
   // Constructor
-  constructor() {
+  constructor(private authService: AuthService) {
+    this.authService.isConnected();
     this.chartOptions = {
       series: [
         {

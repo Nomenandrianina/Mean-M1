@@ -28,4 +28,18 @@ export class AuthService {
     return this.http.post(urlRegistre, data);
   }
 
+  checkConnection(): boolean{
+    if (localStorage.getItem('token') !== null && sessionStorage.getItem('name') !== null) {
+      return true;
+    } else {
+        return false;
+    }
+  }
+  isConnected(): void{
+    console.log(this.checkConnection());
+    if (this.checkConnection() == false){
+      this.router.navigateByUrl('/guest/login');
+    }
+  }
+
 }

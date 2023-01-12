@@ -33,7 +33,7 @@ const NavigationItems = [
     children: [
       {
         id: 'default',
-        title: 'Default',
+        title: 'Acceuil',
         type: 'item',
         classes: 'nav-item',
         url: '/default',

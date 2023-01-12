@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { FormGroup,  FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-loginclient',
   standalone: true,
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './loginclient.component.html',
+  styleUrls: ['./loginclient.component.scss']
 })
-export default class LoginComponent {
+export default class LoginclientComponent {
   message: any;
   loginForm = new FormGroup({
     email:  new FormControl(null, [ Validators.required, Validators.email]),
