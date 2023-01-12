@@ -35,8 +35,19 @@ export class AuthService {
         return false;
     }
   }
+  checkClient(): boolean{
+    if (localStorage.getItem('token') !== null && sessionStorage.getItem('role') == 'Client') {
+      return true;
+    } else {
+        return false;
+    }
+  }
+  isClient(): void{
+    if (this.checkClient() == false){
+      this.router.navigateByUrl('/guest/login/client');
+    }
+  }
   isConnected(): void{
-    console.log(this.checkConnection());
     if (this.checkConnection() == false){
       this.router.navigateByUrl('/guest/login');
     }

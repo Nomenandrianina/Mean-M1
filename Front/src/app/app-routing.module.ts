@@ -28,6 +28,22 @@ const routes: Routes = [
       {
         path: 'sample-page',
         loadComponent: () => import('./demo/sample-page/sample-page.component')
+      },
+      {
+        path: 'home',
+        loadComponent: () => import('./demo/client/home/home.component')
+      },
+      {
+        path: 'bon_entree',
+        loadComponent: () => import('./demo/client/bon-entre/bon-entre.component')
+      },
+      {
+        path: 'reparation',
+        loadComponent: () => import('./demo/client/reparation/reparation.component')
+      },
+      {
+        path: 'facture',
+        loadComponent: () => import('./demo/client/facture/facture.component')
       }
     ]
   },

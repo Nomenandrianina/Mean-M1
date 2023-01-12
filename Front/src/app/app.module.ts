@@ -22,6 +22,10 @@ import { SharedModule } from './theme/shared/shared.module';
 import { ConfigurationComponent } from './theme/layout/admin/configuration/configuration.component';
 import { GuestComponent } from './theme/layout/guest/guest.component';
 
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,

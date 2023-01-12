@@ -36,7 +36,7 @@ const NavigationclientItems = [
         title: 'Acceuil',
         type: 'item',
         classes: 'nav-item',
-        url: '/sample-page',
+        url: '/home',
         icon: 'ti ti-dashboard',
         breadcrumbs: false
       }
@@ -52,7 +52,7 @@ const NavigationclientItems = [
         id: 'bon',
         title: 'Bon d"entrée',
         type: 'item',
-        url: '/sample-page',
+        url: '/bon_entree',
         classes: 'nav-item',
         icon: 'ti ti-brand-chrome'
       },
@@ -61,10 +61,8 @@ const NavigationclientItems = [
         title: 'Réparation',
         type: 'item',
         classes: 'nav-item',
-        url: 'https://codedthemes.gitbook.io/berry-angular/',
-        icon: 'ti ti-vocabulary',
-        target: true,
-        external: true
+        url: '/reparation',
+        icon: 'ti ti-vocabulary'
       }
     ]
   },
@@ -78,7 +76,7 @@ const NavigationclientItems = [
         id: 'facture',
         title: 'Facture',
         type: 'item',
-        url: '/sample-page',
+        url: '/facture',
         classes: 'nav-item',
         icon: 'ti ti-brand-chrome'
       },
