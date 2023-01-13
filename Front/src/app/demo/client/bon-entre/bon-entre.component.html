@@ -1,12 +1,52 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form"  method="POST">
 <div class="row">
   <div class="col-sm-12">
-    <app-card cardTitle="Bon d'entrée Card">
-      <p>
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-        in culpa qui officia deserunt mollit anim id est laborum."
-      </p>
+    <app-card cardTitle="Merci de renseigner les champs suivants.">
+        <div class="row">
+          <div class="col-sm-6">
+            <input type="file" id="file" (change)="onChange($event)" style="display:none">
+            <label for="file">
+              <img  [src]="imageSrc" style="width: 630px;height: 379px;"  alt="image">
+            </label>
+          </div>
+          <div class="col-sm-1" style="height: 439px;
+          border-left: 1px solid;"></div>
+          <div class="col-sm-5">
+
+            <app-card cardTitle="* Champs requis">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Marque: *</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="marque" aria-describedby="emailHelp" placeholder="Citroen">
+                <small id="emailHelp" class="form-text text-muted"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Type: *</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="type" aria-describedby="emailHelp" placeholder="C3">
+                <small id="emailHelp" class="form-text text-muted"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Motorisation: *</label>
+                <input type="email" class="form-control" formControlName="moteur" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="1.9 TDI Boite auto">
+                <small id="emailHelp" class="form-text text-muted"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleInputEmail1">Plaque d'immatriculation: *</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="immatricule" aria-describedby="emailHelp" placeholder="AA-456-BB">
+                <small id="emailHelp" class="form-text text-muted"></small>
+              </div>
+
+              <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-secondary">Valider</button>
+              </div>
+
+            </app-card>
+
+          </div>
+        </div>
     </app-card>
   </div>
 </div>
+</form>
