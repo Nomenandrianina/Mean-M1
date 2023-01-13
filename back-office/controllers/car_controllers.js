@@ -7,14 +7,14 @@ const router = Router();
 
 router.post("/create_car", async (req, res) => {
     try {
-      // create a new role
+      console.log(req.body);
       const car = await Car.create({
-        image: res.body.image,
-        marque: res.body.marque,
-        type: res.body.type,
-        moteur: res.body.moteur,
-        immatriculation: res.body.immatriculation,
-        User: res.body.User
+        image: req.body.image,
+        marque: req.body.marque,
+        type: req.body.type,
+        moteur: req.body.moteur,
+        immatriculation: req.body.immatricule,
+        User: req.body.User
       });
       // send new user as response
       res.status(200).json({status:200,car});

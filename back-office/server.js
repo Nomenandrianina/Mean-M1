@@ -16,10 +16,11 @@ const port = process.env.PORT || 8000;
 
 
 app.use(cors(corsOptions)); 
-app.use(bodyParser.json()); 
+app.use(bodyParser.json({limit: '50mb'})); 
 app.use(bodyParser.urlencoded({
-        extended: true
-    }));
+    limit: '50mb',    
+    extended: true
+}));
 app.use(roleroutes); 
 app.use(userroutes); 
 app.use(carroutes);

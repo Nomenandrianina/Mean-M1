@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export default class BonEntreComponent {
   imageSrc: String = '../../../../assets/images/add-icon.svg';
+  message: boolean=false;
 
   form = new FormGroup({
     id_user: new FormControl(sessionStorage.getItem('id')),
@@ -57,7 +58,10 @@ onChange(event){
 onSubmit(){
   const onSuccess = (response: any) => {
     if (response.status === 200){
-
+      this.message = true;
+      this.imageSrc = '../../../../assets/images/add-icon.svg';
+      this.form.reset();
+      // window.location.reload();
     }else{
       this.form.reset();
     }
@@ -74,5 +78,8 @@ onSubmit(){
     User: sessionStorage.getItem('id')
   };
   this.bonService.create(data).subscribe(onSuccess,onError);
+}
+removeMessage(){
+  this.message = false;
 }
 }
