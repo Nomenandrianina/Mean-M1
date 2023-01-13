@@ -2,6 +2,7 @@ const express = require("express");
 require('dotenv').config();
 const roleroutes = require('./controllers/role_controllers');
 const userroutes = require('./controllers/user_controllers');
+const carroutes = require('./controllers/car_controllers');
 
 
 const cors = require('cors');
@@ -21,4 +22,5 @@ app.use(bodyParser.urlencoded({
     }));
 app.use(roleroutes); 
 app.use(userroutes); 
+app.use(carroutes);
 app.listen(port, () => console.log('Server app listening on port ' + port));
