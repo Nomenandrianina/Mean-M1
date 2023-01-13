@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { AuthService } from 'src/app/services/auth.service';
+import { BonEntreeService } from 'src/app/services/bon-entree.service';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { FormGroup,  FormControl , FormArray , FormBuilder} from '@angular/forms';
@@ -28,7 +29,7 @@ export default class BonEntreComponent {
     immatricule : new FormControl(null, [Validators.required])
   });
 
-  constructor(private authService: AuthService){
+  constructor(private authService: AuthService, private bonService: BonEntreeService){
     this.authService.isClient();
   }
 
@@ -54,6 +55,24 @@ onChange(event){
 }
 
 onSubmit(){
-  console.log(this.form);
+  const onSuccess = (response: any) => {
+    if (response.status === 200){
+
+    }else{
+      this.form.reset();
+    }
+  };
+  const onError = (response: any) => {
+    this.form.reset();
+  };
+  const data = {
+    image: this.form.value.image,
+    marque: this.form.value.marque,
+    type: this.form.value.type,
+    moteur: this.form.value.moteur,
+    immatricule: this.form.value.immatricule,
+    User: sessionStorage.getItem('id')
+  };
+  this.bonService.create(data).subscribe(onSuccess,onError);
 }
 }

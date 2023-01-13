@@ -17,7 +17,7 @@ router.post("/create_car", async (req, res) => {
         User: res.body.User
       });
       // send new user as response
-      res.status(200).json(car);
+      res.status(200).json({status:200,car});
     } catch (error) {
       res.status(400).json({ error });
     }
