@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
+import { DatePipe } from '@angular/common';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +29,8 @@ import { NavigationAtelierItem } from './theme/layout/admin/navigation/navigatio
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,10 +45,10 @@ import { NavigationAtelierItem } from './theme/layout/admin/navigation/navigatio
     NavItemComponent,
     NavCollapseComponent,
     ConfigurationComponent,
-    GuestComponent,
+    GuestComponent
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule,HttpClientModule],
-  providers: [NavigationItem,NavigationClientItem,NavigationAtelierItem ],
+  providers: [NavigationItem,NavigationClientItem,NavigationAtelierItem,DatePipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

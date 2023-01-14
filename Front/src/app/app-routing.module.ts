@@ -58,6 +58,10 @@ const routes: Routes = [
         loadComponent: () => import('./demo/atelier/reparation/reparation.component')
       },
       {
+        path: 'atelier/list_reparation',
+        loadComponent: () => import('./demo/atelier/list-car/list-car.component')
+      },
+      {
         path: 'home/atelier',
         loadComponent: () => import('./demo/atelier/home/home.component')
       }

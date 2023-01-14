@@ -16,6 +16,17 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./reparation.component.scss']
 })
 export default class ReparationComponent {
+
+
+  form = new FormGroup({
+    id_user: new FormControl(sessionStorage.getItem('id')),
+    image: new FormControl(null, [Validators.required]),
+    marque:  new FormControl(null, [ Validators.required]),
+    type:  new FormControl(null, [ Validators.required]),
+    moteur: new FormControl(null, [ Validators.required]),
+    immatricule : new FormControl(null, [Validators.required])
+  });
+
   constructor(private authService: AuthService){
     this.authService.isAtelier();
   }

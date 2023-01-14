@@ -58,7 +58,15 @@ const NavigationAtelierItems = [
       },
       {
         id: 'reparation',
-        title: 'Ajout réparation',
+        title: 'Liste des voitures',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/atelier/list_reparation',
+        icon: 'ti ti-vocabulary'
+      },
+      {
+        id: 'reparation',
+        title: 'Suivie réparation',
         type: 'item',
         classes: 'nav-item',
         url: '/ajout_reparation',
