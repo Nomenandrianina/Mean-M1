@@ -36,10 +36,10 @@ export default class RegisterComponent {
       if (response.status === 200){
         console.log('test');
         this.message = response.message;
-
         // this.router.navigateByUrl('/');
       }else{
         this.message = response.message;
+        console.log(this.message);
         // this.registerform.reset();
       }
     };

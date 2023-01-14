@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const Role = new Schema({
     name: {
         type: String,
-        required: [true, 'Type field is required']
+        // required: [true, 'Type field is required']
     }
 });
 
@@ -13,3 +13,6 @@ const Role = new Schema({
 const role = mongoose.model('role',Role);
 
 module.exports = role;
+
+// 0344506016
+// rap'dy

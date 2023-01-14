@@ -6,31 +6,29 @@
           <a href="javascript:" class="d-flex justify-content-center mt-3">
             <img src="assets/images/logo-dark.svg" />
           </a>
-
           <form class="pt-3" (ngSubmit)="Inscription()" [formGroup]="registerform"  method="POST">
-
             <h5 class="my-4 d-flex justify-content-center"> Sign Up with Email address </h5>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input type="text" formControlName="name" class="form-control" id="floatingInput" placeholder="name@example.com" />
-                  <label for="floatingInput">First Name</label>
+                  <input type="text" formControlName="firstname"  class="form-control" id="floatingInput" placeholder="name@example.com" />
+                  <label for="floatingInput">Nom</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input type="text" formControlName="firstname"  class="form-control" id="floatingInput" placeholder="name@example.com" />
-                  <label for="floatingInput">Last Name</label>
+                  <input type="text" formControlName="name" class="form-control" id="floatingInput" placeholder="name@example.com" />
+                  <label for="floatingInput">Prénom</label>
                 </div>
               </div>
             </div>
             <div class="form-floating mb-3">
               <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
-              <label for="floatingInput">Email Address / Username</label>
+              <label for="floatingInput">Email</label>
             </div>
             <div class="form-floating mb-3">
               <input type="password" formControlName="password" class="form-control" id="floatingInput" placeholder="name@example.com" />
-              <label for="floatingInput">Password</label>
+              <label for="floatingInput">Mot de passe</label>
             </div>
             <div class="form-check mt-3s">
               <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked="" />
@@ -43,9 +41,9 @@
             </div>
           </form>
           <hr />
-          <h5 class="d-flex justify-content-center">
+          <!-- <h5 class="d-flex justify-content-center">
             <a [routerLink]="['/guest/login']"> Already have an account? </a>
-          </h5>
+          </h5> -->
         </div>
       </div>
     </div>
