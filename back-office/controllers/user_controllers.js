@@ -10,23 +10,26 @@ const secret = process.env.SECRET;
 
 // Signup route to create a new user
 router.post("/signup", async (req, res) => {
-  mail_user(req,res);
     try {
-      // hash the password
-      // req.body.password = await bcrypt.hash(req.body.password, 10);
-      // // create a new user
-      
-      // const role = await Role.create({name: req.body.role});
-      // const user = await User.create({
-      //   name: req.body.name,
-      //   firstname: req.body.firstname,
-      //   email: req.body.email,
-      //   password: req.body.password,
-      //   photo: req.body.photo,
-      //   Role: role
-      // });
-      // send new user as response
-      res.status(200).json(user);
+      const user_email = await User.findOne({ email: req.body.email }).populate("Role");
+        if(user_email){
+          res.status(400).json({ error: "Cet email est déjà utilisé!" });
+        }else{
+          req.body.password = await bcrypt.hash(req.body.password, 10);
+          // create a new user
+          const role = await Role.create({name: req.body.role});
+          const user = await User.create({
+          name: req.body.name,
+          firstname: req.body.firstname,
+          email: req.body.email,
+          password: req.body.password,
+          photo: req.body.photo,
+          Role: role
+        });
+          // send new user as response
+          const token = await jwt.sign({ email: req.body.email }, secret);
+          res.status(200).json(token);
+      }
     } catch (error) {
       res.status(400).json({ error });
     }
@@ -56,3 +59,4 @@ router.post("/login", async (req, res) => {
   });
 
 module.exports = router;
+
