@@ -11,6 +11,7 @@ const secret = process.env.SECRET;
 // Signup route to create a new user
 router.post("/signup", async (req, res) => {
     try {
+      
       const user_email = await User.findOne({ email: req.body.email }).populate("Role");
         if(user_email){
           res.status(400).json({ error: "Cet email est déjà utilisé!" });
