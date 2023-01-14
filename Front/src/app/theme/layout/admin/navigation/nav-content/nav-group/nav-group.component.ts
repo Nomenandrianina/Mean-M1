@@ -6,6 +6,7 @@ import { NavigationItem } from '../../navigation';
 import { NavigationClientItem } from '../../navigationclient';
 import { Location, LocationStrategy } from '@angular/common';
 import { BerryConfig } from '../../../../../../app-config';
+import { NavigationAtelierItem } from '../../navigationAtelier';
 
 @Component({
   selector: 'app-nav-group',
@@ -14,7 +15,7 @@ import { BerryConfig } from '../../../../../../app-config';
 })
 export class NavGroupComponent implements OnInit {
   // public props
-  @Input() item!: NavigationItem | NavigationClientItem;
+  @Input() item!: NavigationItem | NavigationClientItem | NavigationAtelierItem;
   @Output() toggle: EventEmitter<any> = new EventEmitter();
 
   // Constructor

@@ -25,7 +25,7 @@ router.post("/create_car", async (req, res) => {
 
   router.get("/all_car", async (req, res) => {
     try {
-        const car = await Car.findOne().populate("User");
+        const car = await Car.find().populate("User");
         res.status(200).json({ status:200,car });
     } catch (error) {
         res.status(400).json({ error });

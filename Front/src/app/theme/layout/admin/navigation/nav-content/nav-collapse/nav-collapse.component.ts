@@ -6,6 +6,7 @@ import { NavigationItem } from '../../navigation';
 import { NavigationClientItem } from '../../navigationclient';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { BerryConfig } from 'src/app/app-config';
+import { NavigationAtelierItem } from '../../navigationAtelier';
 
 @Component({
   selector: 'app-nav-collapse',
@@ -24,7 +25,7 @@ import { BerryConfig } from 'src/app/app-config';
 export class NavCollapseComponent implements OnInit {
   // public props
   @Output() toggle: EventEmitter<any> = new EventEmitter();
-  @Input() item!: NavigationItem | NavigationClientItem;
+  @Input() item!: NavigationItem | NavigationClientItem | NavigationAtelierItem;
 
   visible;
   themeLayout: string;

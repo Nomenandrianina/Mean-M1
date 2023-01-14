@@ -30,8 +30,6 @@ export default class LoginComponent {
 
   checkLogin(){
     const onSuccess = (response: any) => {
-      console.log(response.token);
-      console.log(response.user);
       if (response.status === 200){
             localStorage.setItem('token', response.token);
             sessionStorage.setItem('name', response.user.name);
@@ -39,7 +37,12 @@ export default class LoginComponent {
             sessionStorage.setItem('email', response.user.email);
             sessionStorage.setItem('photo', response.user.photo);
             sessionStorage.setItem('role', response.user.Role.name);
-            this.router.navigateByUrl('/');
+            if(response.user.Role.name == 'Atelier'){
+              this.router.navigateByUrl('/home/atelier');
+            }
+            if(response.user.Role.name == 'Financier'){
+              this.router.navigateByUrl('/');
+            }
       }else{
         this.message = response.error.error;
         this.loginForm.reset();
