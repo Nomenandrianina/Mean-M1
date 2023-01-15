@@ -1,18 +1,13 @@
-<div *ngIf="message" class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Dépôt de voiture avec succès!</strong>
-  <button type="button" (click)="removeMessage" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-
-<form (ngSubmit)="onSubmit()" [formGroup]="form"  method="POST">
+<form  [formGroup]="form"  method="POST">
 <div class="row">
   <div class="col-sm-12">
     <app-card cardTitle="Merci de renseigner les champs suivants.">
         <div class="row">
           <div class="col-sm-6">
-            <input type="file" id="file" (change)="onChange($event)" style="display:none">
-            <label for="file">
-              <img  [src]="imageSrc" style="width: 451px;height: 379px;"  alt="image">
-            </label>
+            <!-- <input type="file" id="file" (change)="onChange($event)" style="display:none"> -->
+            <!-- <label for="file"> -->
+              <img  [src]="" style="width: 451px;height: 379px;"  alt="image">
+            <!-- </label> -->
           </div>
           <div class="col-sm-1" style="height: 439px;
           border-left: 1px solid;"></div>

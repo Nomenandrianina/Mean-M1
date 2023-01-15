@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-export interface NavigationClientItem {
+export interface NavigationAtelierItem {
   id: string;
   title: string;
   type: 'item' | 'collapse' | 'group';
@@ -21,10 +21,10 @@ export interface NavigationClientItem {
   children?: Navigation[];
 }
 
-export interface Navigation extends NavigationClientItem {
-  children?: NavigationClientItem[];
+export interface Navigation extends NavigationAtelierItem {
+  children?: NavigationAtelierItem[];
 }
-const NavigationclientItems = [
+const NavigationAtelierItems = [
   {
     id: 'dashboard',
     title: 'Dashboard',
@@ -36,33 +36,9 @@ const NavigationclientItems = [
         title: 'Acceuil',
         type: 'item',
         classes: 'nav-item',
-        url: '/home/client',
+        url: '/home/atelier',
         icon: 'ti ti-dashboard',
         breadcrumbs: false
-      }
-    ]
-  },
-  {
-    id: 'paper',
-    title: 'Paper',
-    type: 'group',
-    icon: 'icon-navigation',
-    children: [
-      {
-        id: 'bon',
-        title: 'Dépôt voiture',
-        type: 'item',
-        url: '/bon_entree',
-        classes: 'nav-item',
-        icon: 'ti ti-brand-chrome'
-      },
-      {
-        id: 'reparation',
-        title: 'Voir Réparation',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/list_reparation',
-        icon: 'ti ti-vocabulary'
       }
     ]
   },
@@ -73,30 +49,44 @@ const NavigationclientItems = [
     icon: 'icon-navigation',
     children: [
       {
-        id: 'facture',
-        title: 'Facture',
+        id: 'reception',
+        title: 'Reçevoir les voitures',
         type: 'item',
-        url: '/facture',
+        url: '/reception',
         classes: 'nav-item',
         icon: 'ti ti-brand-chrome'
       },
       {
-        id: 'etat de paiement',
-        title: 'Paiement',
+        id: 'reparation',
+        title: 'Liste des voitures',
         type: 'item',
         classes: 'nav-item',
-        url: 'https://codedthemes.gitbook.io/berry-angular/',
-        icon: 'ti ti-vocabulary',
-        target: true,
-        external: true
+        url: '/atelier/list_reparation',
+        icon: 'ti ti-vocabulary'
+      },
+      {
+        id: 'reparation',
+        title: 'Suivie réparation',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/ajout_reparation',
+        icon: 'ti ti-vocabulary'
+      },
+      {
+        id: 'sortie',
+        title: 'Bon de sortie',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/bon_sortie',
+        icon: 'ti ti-vocabulary'
       }
     ]
   }
 ];
 
 @Injectable()
-export class NavigationClientItem {
+export class NavigationAtelierItem {
   get() {
-    return NavigationclientItems;
+    return NavigationAtelierItems;
   }
 }

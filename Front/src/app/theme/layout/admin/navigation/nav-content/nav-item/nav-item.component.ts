@@ -5,6 +5,7 @@ import { Location, LocationStrategy } from '@angular/common';
 // Project import
 import { NavigationItem } from '../../navigation';
 import { NavigationClientItem } from '../../navigationclient';
+import { NavigationAtelierItem } from '../../navigationAtelier';
 import { BerryConfig } from '../../../../../../app-config';
 
 @Component({
@@ -14,7 +15,7 @@ import { BerryConfig } from '../../../../../../app-config';
 })
 export class NavItemComponent implements OnInit {
   // public props
-  @Input() item!: NavigationItem | NavigationClientItem;
+  @Input() item!: NavigationItem | NavigationClientItem | NavigationAtelierItem;
   themeLayout: string;
 
   // Constructor

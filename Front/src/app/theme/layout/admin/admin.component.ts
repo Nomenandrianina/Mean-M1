@@ -20,7 +20,7 @@ export class AdminComponent implements OnInit {
 
   // Constructor
   constructor(private zone: NgZone, private location: Location, private locationStrategy: LocationStrategy, private authService: AuthService) {
-    this.authService.isConnected();
+    // this.authService.isConnected();
     let current_url = this.location.path();
     if (this.location['_baseHref']) {
       current_url = this.location['_baseHref'] + this.location.path();

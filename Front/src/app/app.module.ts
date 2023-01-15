@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { DataTablesModule } from 'angular-datatables';
+import { DatePipe } from '@angular/common';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +23,9 @@ import { NavItemComponent } from './theme/layout/admin/navigation/nav-content/na
 import { SharedModule } from './theme/shared/shared.module';
 import { ConfigurationComponent } from './theme/layout/admin/configuration/configuration.component';
 import { GuestComponent } from './theme/layout/guest/guest.component';
+import { NavigationAtelierItem } from './theme/layout/admin/navigation/navigationAtelier';
+
+
 
 
 
@@ -43,7 +48,7 @@ import { GuestComponent } from './theme/layout/guest/guest.component';
     GuestComponent
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule,HttpClientModule],
-  providers: [NavigationItem,NavigationClientItem ],
+  providers: [NavigationItem,NavigationClientItem,NavigationAtelierItem,DatePipe ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

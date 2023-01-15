@@ -30,7 +30,7 @@ const routes: Routes = [
         loadComponent: () => import('./demo/sample-page/sample-page.component')
       },
       {
-        path: 'home',
+        path: 'home/client',
         loadComponent: () => import('./demo/client/home/home.component')
       },
       {
@@ -38,12 +38,32 @@ const routes: Routes = [
         loadComponent: () => import('./demo/client/bon-entre/bon-entre.component')
       },
       {
-        path: 'reparation',
+        path: 'list_reparation',
         loadComponent: () => import('./demo/client/reparation/reparation.component')
       },
       {
         path: 'facture',
         loadComponent: () => import('./demo/client/facture/facture.component')
+      },
+      {
+        path: 'bon_sortie',
+        loadComponent: () => import('./demo/atelier/bon-sortie/bon-sortie.component')
+      },
+      {
+        path: 'reception',
+        loadComponent: () => import('./demo/atelier/reception/reception.component')
+      },
+      {
+        path: 'ajout_reparation',
+        loadComponent: () => import('./demo/atelier/reparation/reparation.component')
+      },
+      {
+        path: 'atelier/list_reparation',
+        loadComponent: () => import('./demo/atelier/list-car/list-car.component')
+      },
+      {
+        path: 'home/atelier',
+        loadComponent: () => import('./demo/atelier/home/home.component')
       }
     ]
   },

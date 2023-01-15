@@ -28,13 +28,6 @@ export class AuthService {
     return this.http.post(urlRegistre, data);
   }
 
-  checkConnection(): boolean{
-    if (localStorage.getItem('token') !== null && sessionStorage.getItem('name') !== null) {
-      return true;
-    } else {
-        return false;
-    }
-  }
   checkClient(): boolean{
     if (localStorage.getItem('token') !== null && sessionStorage.getItem('role') == 'Client') {
       return true;
@@ -47,9 +40,31 @@ export class AuthService {
       this.router.navigateByUrl('/guest/login/client');
     }
   }
-  isConnected(): void{
-    if (this.checkConnection() == false){
-      this.router.navigateByUrl('/guest/login');
+
+
+  checkAtelier(): boolean{
+    if (localStorage.getItem('token') !== null && sessionStorage.getItem('role') == 'Atelier') {
+      return true;
+    } else {
+        return false;
+    }
+  }
+  isAtelier(): void{
+    if (this.checkAtelier() == false){
+      this.router.navigateByUrl('/guest/login/client');
+    }
+  }
+
+  checkFinancier(): boolean{
+    if (localStorage.getItem('token') !== null && sessionStorage.getItem('role') == 'Financier') {
+      return true;
+    } else {
+        return false;
+    }
+  }
+  isFinancier(): void{
+    if (this.checkFinancier() == false){
+      this.router.navigateByUrl('/guest/login/client');
     }
   }
 

@@ -39,7 +39,8 @@ export default class LoginclientComponent {
             sessionStorage.setItem('email', response.user.email);
             sessionStorage.setItem('photo', response.user.photo);
             sessionStorage.setItem('role', response.user.Role.name);
-            this.router.navigateByUrl('/home');
+            sessionStorage.setItem('id', response.user._id);
+            this.router.navigateByUrl('/home/client');
       }else{
         this.message = response.error.error;
         this.loginForm.reset();

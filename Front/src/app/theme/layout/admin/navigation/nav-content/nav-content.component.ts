@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 // project import
 import { NavigationItem } from '../navigation';
 import {NavigationClientItem} from '../navigationclient';
+import { NavigationAtelierItem } from '../navigationAtelier';
 import { BerryConfig } from '../../../../../app-config';
 
 @Component({
@@ -35,13 +36,17 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   @ViewChild('navbarWrapper', { static: false }) navbarWrapper!: ElementRef;
 
   // Constructor
-  constructor(public nav: NavigationItem,public navclient: NavigationClientItem, private zone: NgZone, private location: Location, private locationStrategy: LocationStrategy) {
+  constructor(public nav: NavigationItem,public navclient: NavigationClientItem,public navAtelier: NavigationAtelierItem, private zone: NgZone, private location: Location, private locationStrategy: LocationStrategy) {
     this.config = BerryConfig;
     this.windowWidth = window.innerWidth;
     this.themeLayout = BerryConfig.layout;
     if(sessionStorage.getItem('role') == 'Client'){
       this.navigation = this.navclient.get();
-    }else{
+    }
+    if(sessionStorage.getItem('role') == 'Atelier'){
+      this.navigation = this.navAtelier.get();
+    }
+    if(sessionStorage.getItem('role') == 'Financier'){
       this.navigation = this.nav.get();
     }
     this.prevDisabled = 'disabled';

@@ -58,7 +58,7 @@ export default class DefaultComponent {
 
   // Constructor
   constructor(private authService: AuthService) {
-    this.authService.isConnected();
+    // this.authService.isConnected();
     this.chartOptions = {
       series: [
         {
