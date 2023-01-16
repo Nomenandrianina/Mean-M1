@@ -31,7 +31,9 @@ export default class ListCarComponent implements OnInit{
     this.datePipe = datePipe;
     this.modalOptions = {
       backdrop:'static',
-      backdropClass:'customBackdrop'
+      backdropClass:'customBackdrop',
+      size: 'lg',
+      windowClass: 'modal-xl'
     }
     this.addForm = this.fb.group({
       items: [null, Validators.required],
@@ -52,6 +54,10 @@ export default class ListCarComponent implements OnInit{
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+  }
+  close(){
+    console.log(this.rows.getRawValue());
+    this.modalService.dismissAll();
   }
 
   private getDismissReason(reason: any): string {
@@ -81,6 +87,20 @@ export default class ListCarComponent implements OnInit{
     this.rows.push(this.createItemFormGroup());
     this.addForm.get('items_value').setValue('yes');
     this.addForm.addControl('rows', this.rows);
+  }
+
+  onRemoveRow(rowIndex: number){
+    // this.arrayTotal.splice(rowIndex, 1);
+    // const reducer = (previousValue, currentValue) => previousValue + currentValue;
+    // this.totalHt = this.arrayTotal.reduce(reducer);
+    // this.tva = (this.totalHt * 20) / 100;
+    // this.totalTt = this.totalHt + this.tva;
+    // this.MFtotalHt =  formatDollar(this.totalHt);
+    // this.MFtotalTt =  formatDollar(this.totalTt);
+    // this.MFtva =  formatDollar(this.tva);
+    // this.lettre = SplitNumber(this.totalTt);
+    this.rows.removeAt(rowIndex);
+
   }
 
   createItemFormGroup(): FormGroup {

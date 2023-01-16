@@ -43,6 +43,10 @@
                 <input class="form-control" type="number" [formControl]="row.get('cout')"  rows="3" min="0" max="50">
               </div>
             </td>
+
+            <td>
+              <button (click)="onRemoveRow(index)" class="btn btn-danger"><i class="mdi mdi-delete"></i>Remove</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -62,7 +66,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Ok</button>
   </div>
 </ng-template>
 
