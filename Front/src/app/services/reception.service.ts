@@ -15,6 +15,8 @@ const urlReparation = baseUrl + 'add_reparation';
 
 const urlgetReparation = baseUrl + 'all_reparation';
 
+const urlgetReparationById = baseUrl + 'reparation/id';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -39,5 +41,9 @@ export class ReceptionService {
 
   getReparation(){
     return this.http.get(urlgetReparation);
+  }
+
+  getReparationById(data){
+    return this.http.post(urlgetReparationById,data);
   }
 }

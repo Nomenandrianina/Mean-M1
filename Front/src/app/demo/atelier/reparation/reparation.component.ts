@@ -30,6 +30,7 @@ export default class ReparationComponent implements OnInit {
   message: any;
   modalOptions:NgbModalOptions;
   closeResult: string;
+  detail: any;
 
 
   constructor(private authService: AuthService, private receptionService: ReceptionService,private modalService: NgbModal){
@@ -49,13 +50,26 @@ export default class ReparationComponent implements OnInit {
   }
 
   open(content,id) {
-    console.log(id);
-    this.modalService.open(content, this.modalOptions).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+    this.loading = true;
+    const data = {
+      id: id
+    };
+    const onSuccess = (response: any) => {
+      this.modalService.open(content, this.modalOptions).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+      if(response.status == 200){
+        this.loading = false;
+        this.detail = response.reparation;
+      }
+    };
+    const onError = (response: any) => {
+      this.loading = false;
+      this.message = response.message;
+    };
+    this.receptionService.getReparationById(data).subscribe(onSuccess,onError);
   }
 
   private getDismissReason(reason: any): string {
