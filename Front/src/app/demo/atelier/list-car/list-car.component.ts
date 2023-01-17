@@ -10,11 +10,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ReceptionService } from 'src/app/services/reception.service';
 import {DatePipe} from '@angular/common';
 import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @Component({
   selector: 'app-list-car',
   standalone: true,
-  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule,NgxLoadingModule],
   templateUrl: './list-car.component.html',
   styleUrls: ['./list-car.component.scss']
 })
@@ -25,6 +26,8 @@ export default class ListCarComponent implements OnInit{
   modalOptions:NgbModalOptions;
   addForm: FormGroup;
   rows: FormArray;
+  idcar: any;
+  public loading = false;
 
   constructor(private authService: AuthService, private receptionService: ReceptionService,private datePipe: DatePipe,private modalService: NgbModal,private fb: FormBuilder,){
     this.authService.isAtelier();
@@ -47,17 +50,33 @@ export default class ListCarComponent implements OnInit{
     this.getCar();
   }
 
-  open(content) {
+  open(content,id) {
+    this.idcar = id;
     this.modalService.open(content, this.modalOptions).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-      console.log(this.rows.getRawValue());
+
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
   close(){
-    console.log(this.rows.getRawValue());
+    this.loading = true;
+    const data = {
+      Car: this.idcar,
+      reparation:  this.rows.getRawValue()
+    }
     this.modalService.dismissAll();
+    const onSuccess = (response: any) => {
+      if(response.status == 200){
+        this.loading = false;
+        window.location.reload();
+      }
+    };
+    const onError = (response: any) => {
+      this.loading = false;
+      this.message = response.message;
+    };
+    this.receptionService.reparation(data).subscribe(onSuccess,onError);
   }
 
   private getDismissReason(reason: any): string {

@@ -6,16 +6,19 @@ import { FormGroup,  FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { NgxLoadingModule } from 'ngx-loading';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule,NgxLoadingModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export default class LoginComponent {
   message: any;
+  public loading = false;
   loginForm = new FormGroup({
     email:  new FormControl(null, [ Validators.required, Validators.email]),
     mdp:  new FormControl(null, [ Validators.required]),
@@ -29,8 +32,10 @@ export default class LoginComponent {
   get mdp(){return this.loginForm.get('mdp'); }
 
   checkLogin(){
+    this.loading = true;
     const onSuccess = (response: any) => {
       if (response.status === 200){
+            this.loading = false;
             localStorage.setItem('token', response.token);
             sessionStorage.setItem('name', response.user.name);
             sessionStorage.setItem('firstname', response.user.firstname);
@@ -44,11 +49,13 @@ export default class LoginComponent {
               this.router.navigateByUrl('/');
             }
       }else{
+        this.loading = false;
         this.message = response.error.error;
         this.loginForm.reset();
       }
     };
     const onError = (response: any) => {
+      this.loading = false;
       this.message = response.error.error;
       this.loginForm.reset();
     };

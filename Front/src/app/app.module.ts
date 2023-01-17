@@ -1,9 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { DataTablesModule } from 'angular-datatables';
 import { DatePipe } from '@angular/common';
+import { NgxLoadingModule } from 'ngx-loading';
+
+
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -47,7 +50,8 @@ import { NavigationAtelierItem } from './theme/layout/admin/navigation/navigatio
     ConfigurationComponent,
     GuestComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule,HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule,HttpClientModule,NgxLoadingModule.forRoot({})],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [NavigationItem,NavigationClientItem,NavigationAtelierItem,DatePipe ],
   bootstrap: [AppComponent]
 })

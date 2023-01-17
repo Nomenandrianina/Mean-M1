@@ -91,11 +91,22 @@
           <td>{{ car.moteur }}</td>
           <td>{{ car.immatriculation }}</td>
           <td *ngIf="car.etat == '1'">
-            <button class="btn btn-secondary" (click)="open(mymodal)" >Lister les réparations</button>
+            <button class="btn btn-secondary" (click)="open(mymodal,car._id)" >Lister les réparations</button>
           </td>
         </tr>
       </tbody>
     </table>
 
   </app-card>
+</div>
+
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+      <div class="custom-class">
+          <h3>
+              Loading...
+          </h3>
+      </div>
+  </ng-template>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
 </div>

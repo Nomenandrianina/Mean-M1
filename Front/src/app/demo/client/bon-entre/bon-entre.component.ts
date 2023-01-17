@@ -8,18 +8,20 @@ import { Router } from '@angular/router';
 import { FormGroup,  FormControl , FormArray , FormBuilder} from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxLoadingModule } from 'ngx-loading';
 
 
 @Component({
   selector: 'app-bon-entre',
   standalone: true,
-  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule,NgxLoadingModule],
   templateUrl: './bon-entre.component.html',
   styleUrls: ['./bon-entre.component.scss']
 })
 export default class BonEntreComponent {
   imageSrc: String = '../../../../assets/images/add-icon.svg';
   message: boolean=false;
+  public loading = false;
 
   form = new FormGroup({
     id_user: new FormControl(sessionStorage.getItem('id')),
@@ -56,17 +58,20 @@ onChange(event){
 }
 
 onSubmit(){
+  this.loading = true;
   const onSuccess = (response: any) => {
     if (response.status === 200){
+      this.loading = false;
       this.message = true;
       this.imageSrc = '../../../../assets/images/add-icon.svg';
       this.form.reset();
-      // window.location.reload();
     }else{
+      this.loading = false;
       this.form.reset();
     }
   };
   const onError = (response: any) => {
+    this.loading = false;
     this.form.reset();
   };
   const data = {

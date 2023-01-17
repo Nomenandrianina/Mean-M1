@@ -9,12 +9,12 @@ import { Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReceptionService } from 'src/app/services/reception.service';
 import {DatePipe} from '@angular/common';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @Component({
   selector: 'app-reception',
   standalone: true,
-  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule, NgxLoadingModule],
   templateUrl: './reception.component.html',
   styleUrls: ['./reception.component.scss']
 })
@@ -22,6 +22,7 @@ export default class ReceptionComponent implements OnInit {
 
   list: any;
   message: any;
+  public loading = false;
 
   constructor(private authService: AuthService, private receptionService: ReceptionService,private datePipe: DatePipe){
     this.authService.isAtelier();
@@ -33,26 +34,31 @@ export default class ReceptionComponent implements OnInit {
   }
 
   getCar(): void{
+    this.loading = true;
     const onSuccess = (response: any) => {
+      this.loading = false;
       this.list = response.car;
-      console.log(this.list);
     };
     const onError = (response: any) => {
+      this.loading = false;
       this.message = response.message;
     };
     this.receptionService.getCar().subscribe(onSuccess,onError);
   }
 
   valideEnter(id_car){
+    this.loading = true;
     const data = {
       id: id_car
     };
     const onSuccess = (response: any) => {
       if(response.status == 200){
+        this.loading = false;
         this.message = "Le " + response.car.marque + " " + response.car.type + " est bien reçu" ;
       }
     };
     const onError = (response: any) => {
+      this.loading = false;
       this.message = response.message;
     };
     this.receptionService.valideCar(data).subscribe(onSuccess,onError);

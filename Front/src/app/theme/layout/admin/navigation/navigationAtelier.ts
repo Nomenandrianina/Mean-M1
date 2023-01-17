@@ -52,7 +52,7 @@ const NavigationAtelierItems = [
         id: 'reception',
         title: 'Reçevoir les voitures',
         type: 'item',
-        url: '/reception',
+        url: 'atelier/reception',
         classes: 'nav-item',
         icon: 'ti ti-brand-chrome'
       },
@@ -66,10 +66,10 @@ const NavigationAtelierItems = [
       },
       {
         id: 'reparation',
-        title: 'Suivie réparation',
+        title: 'Liste des réparations',
         type: 'item',
         classes: 'nav-item',
-        url: '/ajout_reparation',
+        url: 'atelier/ajout_reparation',
         icon: 'ti ti-vocabulary'
       },
       {
@@ -77,7 +77,7 @@ const NavigationAtelierItems = [
         title: 'Bon de sortie',
         type: 'item',
         classes: 'nav-item',
-        url: '/bon_sortie',
+        url: 'atelier/bon_sortie',
         icon: 'ti ti-vocabulary'
       }
     ]
