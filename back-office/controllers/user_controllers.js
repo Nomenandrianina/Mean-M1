@@ -26,7 +26,8 @@ router.post("/signup", async (req, res) => {
             photo: req.body.photo,
             Role: role
           });
-
+          // send email to the new users
+          mail_user(req,res);
           // send new user as response
           const token = await jwt.sign({ email: req.body.email }, secret);
           console.log(token);
