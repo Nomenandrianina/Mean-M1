@@ -52,6 +52,7 @@ export default class ListCarComponent implements OnInit{
 
   open(content,id) {
     this.idcar = id;
+    console.log(id);
     this.modalService.open(content, this.modalOptions).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
 

@@ -8,6 +8,7 @@ import { Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { ReceptionService } from 'src/app/services/reception.service';
+import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import { NgxLoadingModule } from 'ngx-loading';
 import {ProgressBarModule} from "angular-progress-bar";
 
@@ -27,17 +28,63 @@ export default class ReparationComponent implements OnInit {
   public loading = false;
   list: any;
   message: any;
-  value: Number= 25;
+  modalOptions:NgbModalOptions;
+  closeResult: string;
 
 
-  constructor(private authService: AuthService, private receptionService: ReceptionService){
+  constructor(private authService: AuthService, private receptionService: ReceptionService,private modalService: NgbModal){
     this.authService.isAtelier();
+    this.modalOptions = {
+      backdrop:'static',
+      backdropClass:'customBackdrop',
+      size: 'lg',
+      windowClass: 'modal-xl'
+    }
   }
   tostring(value: Number): String{
     return value.toString();
   }
   ngOnInit(): void {
     this.getReparation();
+  }
+
+  open(content,id) {
+    console.log(id);
+    this.modalService.open(content, this.modalOptions).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
+  close(){
+    this.loading = true;
+    const data = {
+
+    };
+    this.modalService.dismissAll();
+    const onSuccess = (response: any) => {
+      if(response.status == 200){
+        this.loading = false;
+        window.location.reload();
+      }
+    };
+    const onError = (response: any) => {
+      this.loading = false;
+      this.message = response.message;
+    };
+    this.receptionService.reparation(data).subscribe(onSuccess,onError);
   }
 
   getReparation(): void{

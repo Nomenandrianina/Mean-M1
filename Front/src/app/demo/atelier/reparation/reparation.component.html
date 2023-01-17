@@ -1,3 +1,18 @@
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Listez les réparation pour cette voiture</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Ok</button>
+  </div>
+</ng-template>
+
 <div class="row">
   <app-card cardTitle="Réception des voitures">
     <table   class="table">
@@ -10,6 +25,7 @@
           <th>Description</th>
           <th>Coût</th>
           <th>Avancement</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +41,9 @@
               <progress-bar  progress="{{ car.avancement }}" [color]="'#488aff'">
               </progress-bar>
             </div>
+          </td>
+          <td>
+            <button class="btn btn-primary" (click)="open(mymodal,car.Car._id)">Détails</button>
           </td>
         </tr>
       </tbody>
