@@ -33,13 +33,6 @@ export default class RegisterComponent {
     const onSuccess = (response: any) => {
       localStorage.setItem('token', response);
       this.router.navigateByUrl('/');
-
-      console.log(response);
-      if (response.status === 200){
-        console.log(response);
-        this.message = response.message;
-        // this.router.navigateByUrl('/');
-      }
     };
 
     const onError = (response: any) => {
