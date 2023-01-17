@@ -46,15 +46,15 @@ const routes: Routes = [
         loadComponent: () => import('./demo/client/facture/facture.component')
       },
       {
-        path: 'bon_sortie',
+        path: 'atelier/bon_sortie',
         loadComponent: () => import('./demo/atelier/bon-sortie/bon-sortie.component')
       },
       {
-        path: 'reception',
+        path: 'atelier/reception',
         loadComponent: () => import('./demo/atelier/reception/reception.component')
       },
       {
-        path: 'ajout_reparation',
+        path: 'atelier/ajout_reparation',
         loadComponent: () => import('./demo/atelier/reparation/reparation.component')
       },
       {

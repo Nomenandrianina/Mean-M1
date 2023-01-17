@@ -33,6 +33,7 @@ export default class RegisterComponent {
     const onSuccess = (response: any) => {
       localStorage.setItem('token', response);
       this.router.navigateByUrl('/');
+      // inscription
     };
 
     const onError = (response: any) => {

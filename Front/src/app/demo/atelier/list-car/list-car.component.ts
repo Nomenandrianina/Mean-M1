@@ -10,11 +10,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ReceptionService } from 'src/app/services/reception.service';
 import {DatePipe} from '@angular/common';
 import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @Component({
   selector: 'app-list-car',
   standalone: true,
-  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule,NgxLoadingModule],
   templateUrl: './list-car.component.html',
   styleUrls: ['./list-car.component.scss']
 })
@@ -25,13 +26,17 @@ export default class ListCarComponent implements OnInit{
   modalOptions:NgbModalOptions;
   addForm: FormGroup;
   rows: FormArray;
+  idcar: any;
+  public loading = false;
 
   constructor(private authService: AuthService, private receptionService: ReceptionService,private datePipe: DatePipe,private modalService: NgbModal,private fb: FormBuilder,){
     this.authService.isAtelier();
     this.datePipe = datePipe;
     this.modalOptions = {
       backdrop:'static',
-      backdropClass:'customBackdrop'
+      backdropClass:'customBackdrop',
+      size: 'lg',
+      windowClass: 'modal-xl'
     }
     this.addForm = this.fb.group({
       items: [null, Validators.required],
@@ -45,13 +50,34 @@ export default class ListCarComponent implements OnInit{
     this.getCar();
   }
 
-  open(content) {
+  open(content,id) {
+    this.idcar = id;
+    console.log(id);
     this.modalService.open(content, this.modalOptions).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-      console.log(this.rows.getRawValue());
+
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+  }
+  close(){
+    this.loading = true;
+    const data = {
+      Car: this.idcar,
+      reparation:  this.rows.getRawValue()
+    }
+    this.modalService.dismissAll();
+    const onSuccess = (response: any) => {
+      if(response.status == 200){
+        this.loading = false;
+        window.location.reload();
+      }
+    };
+    const onError = (response: any) => {
+      this.loading = false;
+      this.message = response.message;
+    };
+    this.receptionService.reparation(data).subscribe(onSuccess,onError);
   }
 
   private getDismissReason(reason: any): string {
@@ -81,6 +107,20 @@ export default class ListCarComponent implements OnInit{
     this.rows.push(this.createItemFormGroup());
     this.addForm.get('items_value').setValue('yes');
     this.addForm.addControl('rows', this.rows);
+  }
+
+  onRemoveRow(rowIndex: number){
+    // this.arrayTotal.splice(rowIndex, 1);
+    // const reducer = (previousValue, currentValue) => previousValue + currentValue;
+    // this.totalHt = this.arrayTotal.reduce(reducer);
+    // this.tva = (this.totalHt * 20) / 100;
+    // this.totalTt = this.totalHt + this.tva;
+    // this.MFtotalHt =  formatDollar(this.totalHt);
+    // this.MFtotalTt =  formatDollar(this.totalTt);
+    // this.MFtva =  formatDollar(this.tva);
+    // this.lettre = SplitNumber(this.totalTt);
+    this.rows.removeAt(rowIndex);
+
   }
 
   createItemFormGroup(): FormGroup {

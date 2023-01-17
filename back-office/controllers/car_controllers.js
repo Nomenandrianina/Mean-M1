@@ -16,6 +16,7 @@ router.post("/create_car", async (req, res) => {
         moteur: req.body.moteur,
         immatriculation: req.body.immatricule,
         etat: '0',
+        status: '0',
         User: req.body.User
       });
       // send new user as response

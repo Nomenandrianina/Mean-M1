@@ -1,52 +1,71 @@
-<form  [formGroup]="form"  method="POST">
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Avancement réparation pour cette voiture</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-4">
+        <img src="{{ detail.type }}" alt="">
+      </div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-outline-dark" (click)="close()">Valider</button>
+  </div>
+</ng-template>
+
 <div class="row">
-  <div class="col-sm-12">
-    <app-card cardTitle="Merci de renseigner les champs suivants.">
-        <div class="row">
-          <div class="col-sm-6">
-            <!-- <input type="file" id="file" (change)="onChange($event)" style="display:none"> -->
-            <!-- <label for="file"> -->
-              <img  [src]="" style="width: 451px;height: 379px;"  alt="image">
-            <!-- </label> -->
-          </div>
-          <div class="col-sm-1" style="height: 439px;
-          border-left: 1px solid;"></div>
-          <div class="col-sm-5">
+  <app-card cardTitle="Réception des voitures">
+    <table   class="table">
+      <thead>
+        <tr>
+          <th>Images</th>
+          <th>Marques</th>
+          <th>Types</th>
+          <th>A réparer</th>
+          <th>Description</th>
+          <th>Coût</th>
+          <th>Avancement</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of list">
+          <td><img src="{{ car.Car.image }}" alt="" style="width: 100px;border-radius: 5px;"></td>
+          <td>{{ car.Car.marque }}</td>
+          <td>{{ car.Car.type }}</td>
+          <td>{{ car.type }}</td>
+          <td>{{ car.description }}</td>
+          <td>{{ car.cout }} $</td>
+          <td>
+            <div>
+              <progress-bar  progress="{{ car.avancement }}" [color]="'#488aff'">
+              </progress-bar>
+            </div>
+          </td>
+          <td>
+            <button class="btn btn-primary" (click)="open(mymodal,car._id)">Détails</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-            <app-card cardTitle="* Champs requis">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Marque: *</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="marque" aria-describedby="emailHelp" placeholder="Citroen">
-                <small id="emailHelp" class="form-text text-muted"></small>
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Type: *</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="type" aria-describedby="emailHelp" placeholder="C3">
-                <small id="emailHelp" class="form-text text-muted"></small>
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Motorisation: *</label>
-                <input type="email" class="form-control" formControlName="moteur" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="1.9 TDI Boite auto">
-                <small id="emailHelp" class="form-text text-muted"></small>
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputEmail1">Plaque d'immatriculation: *</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" formControlName="immatricule" aria-describedby="emailHelp" placeholder="AA-456-BB">
-                <small id="emailHelp" class="form-text text-muted"></small>
-              </div>
-
-              <div class="d-grid mt-4">
-                <button type="submit" class="btn btn-secondary">Valider</button>
-              </div>
-
-            </app-card>
-
-          </div>
+  </app-card>
+  <div class="my-container">
+    <ng-template #customLoadingTemplate>
+        <div class="custom-class">
+            <h3>
+                Loading...
+            </h3>
         </div>
-    </app-card>
+    </ng-template>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
   </div>
 </div>
-</form>
+
+

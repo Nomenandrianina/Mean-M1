@@ -27,6 +27,10 @@ const Car = new Schema({
         type: String,
         required: [true, 'Type field is required']
     },
+    status: {
+        type: String,
+        default: '0'
+    },
     User: {
         type: mongoose.Types.ObjectId, ref: "user"
     },
