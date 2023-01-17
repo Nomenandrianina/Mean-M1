@@ -41,6 +41,7 @@
             </div>
           </form>
           <hr />
+          <span *ngIf="message!=null" style="color: red;">{{ message }}</span>
           <!-- <h5 class="d-flex justify-content-center">
             <a [routerLink]="['/guest/login']"> Already have an account? </a>
           </h5> -->

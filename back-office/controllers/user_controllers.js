@@ -19,15 +19,17 @@ router.post("/signup", async (req, res) => {
           // create a new user
           const role = await Role.create({name: req.body.role});
           const user = await User.create({
-          name: req.body.name,
-          firstname: req.body.firstname,
-          email: req.body.email,
-          password: req.body.password,
-          photo: req.body.photo,
-          Role: role
-        });
+            name: req.body.name,
+            firstname: req.body.firstname,
+            email: req.body.email,
+            password: req.body.password,
+            photo: req.body.photo,
+            Role: role
+          });
+
           // send new user as response
           const token = await jwt.sign({ email: req.body.email }, secret);
+          console.log(token);
           res.status(200).json(token);
       }
     } catch (error) {
