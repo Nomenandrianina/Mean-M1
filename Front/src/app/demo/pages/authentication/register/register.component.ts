@@ -27,24 +27,18 @@ export default class RegisterComponent {
     firstname:  new FormControl(null, [ Validators.required]),
     email:  new FormControl(null, [ Validators.required, Validators.email]),
     password:  new FormControl(null, [ Validators.required]),
-    photo:  new FormControl("photo"),
-    role:  new FormControl("client"),
   });
 
   Inscription(){
     const onSuccess = (response: any) => {
-      if (response.status === 200){
-        console.log('test');
-        this.message = response.message;
-        // this.router.navigateByUrl('/');
-      }else{
-        this.message = response.message;
-        console.log(this.message);
-        // this.registerform.reset();
-      }
+      localStorage.setItem('token', response);
+      this.router.navigateByUrl('/');
+      // inscription
     };
 
     const onError = (response: any) => {
+      console.log(response.error.error);
+      this.message=response.error.error;
       this.registerform.reset();
     };
 
@@ -53,8 +47,8 @@ export default class RegisterComponent {
       firstname: this.registerform.value.firstname,
       email: this.registerform.value.email,
       password: this.registerform.value.password,
-      photo: this.registerform.value.photo,
-      role: this.registerform.value.role
+      photo: "photo",
+      role: "client"
     };
 
     this.authService.Inscription(data).subscribe(onSuccess,onError);
