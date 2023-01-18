@@ -8,10 +8,9 @@ import { Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { ReceptionService } from 'src/app/services/reception.service';
-import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import { NgxLoadingModule } from 'ngx-loading';
 import {ProgressBarModule} from "angular-progress-bar";
-import DetailComponent from "../detail/detail.component";
+
 
 
 
@@ -29,30 +28,16 @@ export default class ReparationComponent implements OnInit {
   public loading = false;
   list: any;
   message: any;
-  modalOptions:NgbModalOptions;
-  closeResult: string;
-  detail: {};
-  kaka: string;
 
 
-  constructor(private authService: AuthService, private receptionService: ReceptionService,private modalService: NgbModal){
+  constructor(private authService: AuthService, private receptionService: ReceptionService){
     this.authService.isAtelier();
-    this.modalOptions = {
-      backdrop:'static',
-      backdropClass:'customBackdrop',
-      size: 'lg',
-      windowClass: 'modal-xl'
-    }
   }
 
   ngOnInit(): void {
     this.getReparation();
   }
 
-
-  open(id) {
-    this.modalService.open(DetailComponent);
-  }
 
 
   getReparation(): void{

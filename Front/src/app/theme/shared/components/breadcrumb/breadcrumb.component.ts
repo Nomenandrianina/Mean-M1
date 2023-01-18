@@ -43,7 +43,7 @@ export class BreadcrumbComponent implements OnInit {
 
   filterNavigation(activeLink: any) {
     let result: any;
-    let title = 'Welcome';
+    let title = 'M1Prom10';
     this.navigation.forEach(function (a: any) {
       if (a.type === 'item' && 'url' in a && a.url === activeLink) {
         result = [
@@ -124,6 +124,6 @@ export class BreadcrumbComponent implements OnInit {
       }
     });
     this.navigationList = result;
-    this.titleService.setTitle(title + ' | Berry Angular Template');
+    this.titleService.setTitle(title + ' | Antonio-Jonny');
   }
 }

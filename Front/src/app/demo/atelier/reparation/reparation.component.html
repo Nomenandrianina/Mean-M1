@@ -1,5 +1,3 @@
-
-
 <div class="row">
   <app-card cardTitle="Réception des voitures">
     <table   class="table">
@@ -30,7 +28,9 @@
             </div>
           </td>
           <td>
-            <button class="btn btn-primary" (click)="open(car._id)" >Détails</button>
+            <a routerLink="/atelier/detail_reparation/{{ car._id }}">
+              <button class="btn btn-primary" >Détails</button>
+            </a>
           </td>
         </tr>
       </tbody>
