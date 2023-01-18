@@ -11,29 +11,18 @@ import { ReceptionService } from 'src/app/services/reception.service';
 import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import { NgxLoadingModule } from 'ngx-loading';
 import {ProgressBarModule} from "angular-progress-bar";
-import DetailComponent from "../detail/detail.component";
-
-
-
-
 
 @Component({
-  selector: 'app-reparation',
+  selector: 'app-detail',
   standalone: true,
   imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule,NgxLoadingModule,ProgressBarModule],
-  templateUrl: './reparation.component.html',
-  styleUrls: ['./reparation.component.scss']
+  templateUrl: './detail.component.html',
+  styleUrls: ['./detail.component.scss']
 })
-export default class ReparationComponent implements OnInit {
+export default class DetailComponent {
 
-  public loading = false;
-  list: any;
-  message: any;
   modalOptions:NgbModalOptions;
   closeResult: string;
-  detail: {};
-  kaka: string;
-
 
   constructor(private authService: AuthService, private receptionService: ReceptionService,private modalService: NgbModal){
     this.authService.isAtelier();
@@ -45,28 +34,19 @@ export default class ReparationComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.getReparation();
+  close(){
+    this.modalService.dismissAll();
   }
 
 
-  open(id) {
-    this.modalService.open(DetailComponent);
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 
-
-  getReparation(): void{
-    this.loading = true;
-
-    const onSuccess = (response: any) => {
-      console.log(response);
-      this.loading = false;
-      this.list = response.reparation;
-    };
-    const onError = (response: any) => {
-      this.loading = false;
-      this.message = response.message;
-    };
-    this.receptionService.getReparation().subscribe(onSuccess,onError);
-  }
 }
