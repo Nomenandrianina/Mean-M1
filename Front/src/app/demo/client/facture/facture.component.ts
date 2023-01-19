@@ -12,7 +12,12 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 
 export default class FactureComponent {
+  name: String;
+  firstname: String;
+
   constructor(private authService: AuthService){
     this.authService.isClient();
+    this.name = sessionStorage.getItem('name');
+    this.firstname = sessionStorage.getItem('firstname');
   }
 }
