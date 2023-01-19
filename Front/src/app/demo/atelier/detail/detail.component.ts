@@ -9,22 +9,73 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { ReceptionService } from 'src/app/services/reception.service';
 import { NgxLoadingModule } from 'ngx-loading';
-import {ProgressBarModule} from "angular-progress-bar";
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule,NgxLoadingModule,ProgressBarModule],
+  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule,NgxLoadingModule,NgCircleProgressModule],
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export default class DetailComponent {
+export default class DetailComponent implements OnInit{
 
   id = this.route.snapshot.paramMap.get('id');
+  public loading = false;
+  list: any;
+  message: any;
 
-  constructor(private authService: AuthService, private receptionService: ReceptionService,private route: ActivatedRoute){
+  form = new FormGroup({
+    id_rep: new FormControl(this.id),
+    avancement: new FormControl(null, [Validators.required]),
+  });
+
+  constructor(private authService: AuthService, private receptionService: ReceptionService,private router: Router,private route: ActivatedRoute){
     this.authService.isAtelier();
-    console.log(this.id);
+  }
+
+  get id_rep(){return this.form.get('id_rep')}
+  get avancement(){return this.form.get('avancement'); }
+
+  ngOnInit(): void {
+    this.getReparationById();
+  }
+
+
+  getReparationById(): void{
+    this.loading = true;
+    const data = {
+      id: this.id
+    };
+    const onSuccess = (response: any) => {
+      this.loading = false;
+      this.list = response.reparation;
+    };
+    const onError = (response: any) => {
+      this.loading = false;
+      this.message = response.message;
+    };
+    this.receptionService.getReparationById(data).subscribe(onSuccess,onError);
+
+  }
+
+  onsubmit(){
+    this.loading = true;
+    const data = {
+      id: this.form.value.id_rep,
+      avancement: this.form.value.avancement
+    }
+    const onSuccess = (response: any) => {
+      this.loading = false;
+      this.router.navigateByUrl('/atelier/update/reparation');
+    };
+    const onError = (response: any) => {
+      this.loading = false;
+      this.message = response.message;
+    };
+    this.receptionService.updateReparation(data).subscribe(onSuccess,onError);
+
   }
 
 

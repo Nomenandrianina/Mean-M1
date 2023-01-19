@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ReceptionService } from 'src/app/services/reception.service';
 import { NgxLoadingModule } from 'ngx-loading';
 import {ProgressBarModule} from "angular-progress-bar";
-
 
 
 
@@ -44,7 +43,6 @@ export default class ReparationComponent implements OnInit {
     this.loading = true;
 
     const onSuccess = (response: any) => {
-      console.log(response);
       this.loading = false;
       this.list = response.reparation;
     };

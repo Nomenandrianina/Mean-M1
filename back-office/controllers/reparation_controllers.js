@@ -57,4 +57,13 @@ router.post("/add_reparation", async (req, res) => {
     }
   });
 
+  router.post("/update/avancement", async (req, res) =>{
+    try {
+      const reparation = await Reparation.findByIdAndUpdate(req.body.id,  { $set:{avancement: req.body.avancement} });
+      res.status(200).json({ status:200,reparation });
+    } catch (error) {
+      res.status(400).json({ error });
+    }
+  });
+
   module.exports = router;

@@ -17,6 +17,10 @@ const urlgetReparation = baseUrl + 'all_reparation';
 
 const urlgetReparationById = baseUrl + 'reparation/id';
 
+const urlUpdatereparation = baseUrl + 'update/avancement';
+
+const urlGetCarByUser = baseUrl + 'client/car/reparation'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -45,5 +49,13 @@ export class ReceptionService {
 
   getReparationById(data){
     return this.http.post(urlgetReparationById,data);
+  }
+
+  updateReparation(data){
+    return this.http.post(urlUpdatereparation,data);
+  }
+
+  getCarByUser(data){
+    return this.http.post(urlGetCarByUser,data);
   }
 }

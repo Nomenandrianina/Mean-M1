@@ -1,17 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
-import { AuthService } from 'src/app/services/auth.service';
+import { FormGroup,  FormControl , FormArray , FormBuilder} from '@angular/forms';
+import { Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ReceptionService } from 'src/app/services/reception.service';
+import {DatePipe} from '@angular/common';
+import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+import { NgxLoadingModule } from 'ngx-loading';
+import {ProgressBarModule} from "angular-progress-bar";
 
 @Component({
   selector: 'app-reparation',
   standalone: true,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule,NgxLoadingModule,ProgressBarModule],
   templateUrl: './reparation.component.html',
   styleUrls: ['./reparation.component.scss']
 })
-export default class ReparationComponent {
-  constructor(private authService: AuthService){
+export default class ReparationComponent implements OnInit {
+  list: any;
+  message: any;
+  public loading = false;
+
+  constructor(private authService: AuthService, private receptionService: ReceptionService){
     this.authService.isClient();
+  }
+
+  ngOnInit(): void {
+    this.getCarUser();
+  }
+
+  getCarUser(): void{
+    this.loading = true;
+    const data = {
+      user: sessionStorage.getItem('id')
+    };
+    const onSuccess = (response: any) => {
+      this.loading = false;
+      this.list = response.reparation;
+    };
+    const onError = (response: any) => {
+      this.message = response.message;
+      this.loading = false;
+    };
+    this.receptionService.getCarByUser(data).subscribe(onSuccess,onError);
   }
 }

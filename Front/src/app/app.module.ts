@@ -1,9 +1,12 @@
+import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { NgxLoadingModule } from 'ngx-loading';
+
+
 
 
 
@@ -51,7 +54,15 @@ import { NavigationAtelierItem } from './theme/layout/admin/navigation/navigatio
     ConfigurationComponent,
     GuestComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule,HttpClientModule,NgxLoadingModule.forRoot({})],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule,HttpClientModule,NgxLoadingModule.forRoot({}),NgCircleProgressModule.forRoot({
+    // set defaults here
+    radius: 100,
+    outerStrokeWidth: 16,
+    innerStrokeWidth: 8,
+    outerStrokeColor: '#78C000',
+    innerStrokeColor: '#C7E596',
+    animationDuration: 300,
+  }),],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [NavigationItem,NavigationClientItem,NavigationAtelierItem,DatePipe ],
   bootstrap: [AppComponent]

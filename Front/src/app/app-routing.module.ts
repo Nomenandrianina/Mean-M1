@@ -54,7 +54,7 @@ const routes: Routes = [
         loadComponent: () => import('./demo/atelier/reception/reception.component')
       },
       {
-        path: 'atelier/ajout_reparation',
+        path: 'atelier/update/reparation',
         loadComponent: () => import('./demo/atelier/reparation/reparation.component')
       },
       {

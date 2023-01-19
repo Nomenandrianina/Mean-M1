@@ -1,12 +1,52 @@
 <div class="row">
-  <div class="col-sm-12">
-    <app-card cardTitle="Réparation Card">
-      <p>
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-        in culpa qui officia deserunt mollit anim id est laborum."
-      </p>
-    </app-card>
+  <app-card cardTitle="Avancement de réparation de ma voiture">
+    <table   class="table">
+      <thead>
+        <tr>
+          <th>Images</th>
+          <th>Marques</th>
+          <th>Types</th>
+          <th>A réparer</th>
+          <th>Description</th>
+          <th>Coût</th>
+          <th>Avancement</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of list">
+          <td><img src="{{ car.Car.image }}" alt="" style="width: 100px;border-radius: 5px;"></td>
+          <td>{{ car.Car.marque }}</td>
+          <td>{{ car.Car.type }}</td>
+          <td>{{ car.type }}</td>
+          <td>{{ car.description }}</td>
+          <td>{{ car.cout }} $</td>
+          <td>
+            <div>
+              <progress-bar  progress="{{ car.avancement }}" [color]="'#488aff'">
+              </progress-bar>
+            </div>
+          </td>
+          <td>
+            <a routerLink="/atelier/detail_reparation/{{ car._id }}">
+              <button class="btn btn-primary" >Détails</button>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </app-card>
+  <div class="my-container">
+    <ng-template #customLoadingTemplate>
+        <div class="custom-class">
+            <h3>
+                Loading...
+            </h3>
+        </div>
+    </ng-template>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
   </div>
 </div>
+
+
