@@ -34,6 +34,10 @@ const routes: Routes = [
         loadComponent: () => import('./demo/client/home/home.component')
       },
       {
+        path: 'client/detail_reparation/:id',
+        loadComponent: () => import('./demo/client/detail/detail.component')
+      },
+      {
         path: 'bon_entree',
         loadComponent: () => import('./demo/client/bon-entre/bon-entre.component')
       },
