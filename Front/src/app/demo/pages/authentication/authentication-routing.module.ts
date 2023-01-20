@@ -14,8 +14,12 @@ const routes: Routes = [
         loadComponent: () => import('./loginclient/loginclient.component')
       },
       {
-        path: 'register',
+        path: 'admin/register',
         loadComponent: () => import('./register/register.component')
+      },
+      {
+        path: 'client/register',
+        loadComponent: () => import('./registerclient/registerclient.component')
       }
     ]
   }

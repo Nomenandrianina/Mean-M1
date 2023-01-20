@@ -23,13 +23,6 @@
               </div>
             </div>
             <div class="form-floating mb-3">
-              <select class="form-select" formControlName="role" id="floatingInput">
-                  <option value="Atelier">Atelier</option>
-                  <option value="Financier">Financier</option>
-              </select>
-              <label for="floatingInput">Role</label>
-            </div>
-            <div class="form-floating mb-3">
               <input type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
               <label for="floatingInput">Email</label>
             </div>
@@ -58,13 +51,13 @@
   </div>
 </div>
 
- <div class="my-container">
-    <ng-template #customLoadingTemplate>
-        <div class="custom-class">
-            <h3>
-                Loading...
-            </h3>
-        </div>
-    </ng-template>
-    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
-  </div>
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+      <div class="custom-class">
+          <h3>
+              Loading...
+          </h3>
+      </div>
+  </ng-template>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+</div>
