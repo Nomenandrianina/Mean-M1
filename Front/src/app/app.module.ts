@@ -12,6 +12,8 @@ import { NgxLoadingModule } from 'ngx-loading';
 
 
 
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './theme/layout/admin/admin.component';
@@ -63,7 +65,7 @@ import { NavigationAtelierItem } from './theme/layout/admin/navigation/navigatio
     outerStrokeColor: '#78C000',
     innerStrokeColor: '#C7E596',
     animationDuration: 300,
-  }),],
+  })],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [NavigationItem,NavigationClientItem,NavigationAtelierItem,DatePipe ],
   bootstrap: [AppComponent]

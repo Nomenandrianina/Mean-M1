@@ -10,11 +10,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ReceptionService } from 'src/app/services/reception.service';
 import {DatePipe} from '@angular/common';
 import { NgxLoadingModule } from 'ngx-loading';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-reception',
   standalone: true,
-  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule, NgxLoadingModule],
+  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule, NgxLoadingModule,Ng2SearchPipeModule],
   templateUrl: './reception.component.html',
   styleUrls: ['./reception.component.scss']
 })
@@ -23,6 +24,7 @@ export default class ReceptionComponent implements OnInit {
   list: any;
   message: any;
   public loading = false;
+  filterTerm: string;
 
   constructor(private authService: AuthService, private receptionService: ReceptionService,private datePipe: DatePipe){
     this.authService.isAtelier();

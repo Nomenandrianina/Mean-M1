@@ -1,6 +1,14 @@
 <div class="row">
   <app-card cardTitle="Avancement de réparation de ma voiture">
-    <table   class="table">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search..."
+        [(ngModel)]="filterTerm"
+      />
+    </div>
+    <table   class="table datatable-table">
       <thead>
         <tr>
           <th>Images</th>
@@ -14,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let car of list">
+        <tr *ngFor="let car of list | filter: filterTerm">
           <td><img src="{{ car.Car.image }}" alt="" style="width: 100px;border-radius: 5px;"></td>
           <td>{{ car.Car.marque }}</td>
           <td>{{ car.Car.type }}</td>

@@ -5,6 +5,14 @@
 
 <div class="row">
   <app-card cardTitle="Réception des voitures">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search..."
+        [(ngModel)]="filterTerm"
+      />
+    </div>
     <table   class="table">
       <thead>
         <tr>
@@ -17,7 +25,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let car of list">
+        <tr *ngFor="let car of list | filter: filterTerm">
           <td><img src="{{ car.image }}" alt="" style="width: 100px;border-radius: 5px;"></td>
           <td>{{ car.marque }}</td>
           <td>{{ car.type }}</td>

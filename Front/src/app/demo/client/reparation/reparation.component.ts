@@ -9,14 +9,16 @@ import { Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReceptionService } from 'src/app/services/reception.service';
 import {DatePipe} from '@angular/common';
-import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import { NgxLoadingModule } from 'ngx-loading';
 import {ProgressBarModule} from "angular-progress-bar";
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+
 
 @Component({
   selector: 'app-reparation',
   standalone: true,
-  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule,NgxLoadingModule,ProgressBarModule],
+  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule,NgxLoadingModule,ProgressBarModule,Ng2SearchPipeModule],
   templateUrl: './reparation.component.html',
   styleUrls: ['./reparation.component.scss']
 })
@@ -24,6 +26,9 @@ export default class ReparationComponent implements OnInit {
   list: any;
   message: any;
   public loading = false;
+  filterTerm!: string;
+
+
 
   constructor(private authService: AuthService, private receptionService: ReceptionService){
     this.authService.isClient();
@@ -32,6 +37,8 @@ export default class ReparationComponent implements OnInit {
   ngOnInit(): void {
     this.getCarUser();
   }
+
+
 
   getCarUser(): void{
     this.loading = true;

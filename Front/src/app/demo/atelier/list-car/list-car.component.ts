@@ -11,15 +11,17 @@ import { ReceptionService } from 'src/app/services/reception.service';
 import {DatePipe} from '@angular/common';
 import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import { NgxLoadingModule } from 'ngx-loading';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-list-car',
   standalone: true,
-  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule,NgxLoadingModule],
+  imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule,NgxLoadingModule,Ng2SearchPipeModule],
   templateUrl: './list-car.component.html',
   styleUrls: ['./list-car.component.scss']
 })
 export default class ListCarComponent implements OnInit{
+  filterTerm: string;
   list: any;
   message: any;
   closeResult: string;
@@ -93,11 +95,13 @@ export default class ListCarComponent implements OnInit{
 
 
   getCar(): void{
+    this.loading = true;
     const onSuccess = (response: any) => {
+      this.loading = false;
       this.list = response.car;
-      console.log(this.list);
     };
     const onError = (response: any) => {
+      this.loading = false;
       this.message = response.message;
     };
     this.receptionService.getCar().subscribe(onSuccess,onError);
@@ -110,17 +114,7 @@ export default class ListCarComponent implements OnInit{
   }
 
   onRemoveRow(rowIndex: number){
-    // this.arrayTotal.splice(rowIndex, 1);
-    // const reducer = (previousValue, currentValue) => previousValue + currentValue;
-    // this.totalHt = this.arrayTotal.reduce(reducer);
-    // this.tva = (this.totalHt * 20) / 100;
-    // this.totalTt = this.totalHt + this.tva;
-    // this.MFtotalHt =  formatDollar(this.totalHt);
-    // this.MFtotalTt =  formatDollar(this.totalTt);
-    // this.MFtva =  formatDollar(this.tva);
-    // this.lettre = SplitNumber(this.totalTt);
     this.rows.removeAt(rowIndex);
-
   }
 
   createItemFormGroup(): FormGroup {

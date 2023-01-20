@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BreadcrumbModule, CardModule } from './components';
 
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SearchFilterPipe } from 'src/app/search-filter.pipe';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
 // bootstrap import
