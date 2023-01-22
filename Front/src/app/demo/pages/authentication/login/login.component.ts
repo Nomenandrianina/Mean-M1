@@ -35,6 +35,7 @@ export default class LoginComponent {
     this.loading = true;
     const onSuccess = (response: any) => {
       if (response.status === 200){
+        console.log('role', response.user.Role.name)
             this.loading = false;
             localStorage.setItem('token', response.token);
             sessionStorage.setItem('name', response.user.name);

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const Role = new Schema({
     name: {
         type: String,
-        // required: [true, 'Type field is required']
+        required: [true, 'Type field is required']
     }
 });
 

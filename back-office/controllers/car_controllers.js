@@ -4,6 +4,7 @@ const Car = require("../models/car");
 const db = require("../db/connection");
 const { isObjectIdOrHexString } = require("mongoose");
 const Reparation = require("../models/reparation");
+const {mail_reception_voiture}= require('../middelware/middelware');
 
 const router = Router();
 
@@ -22,6 +23,7 @@ router.post("/create_car", async (req, res) => {
       });
       // send new user as response
       res.status(200).json({status:200,car});
+      mail_reception_voiture(req,res);
     } catch (error) {
       res.status(400).json({ error });
     }
