@@ -23,7 +23,6 @@ router.post("/create_car", async (req, res) => {
       });
       // send new user as response
       res.status(200).json({status:200,car});
-      mail_reception_voiture(req,res);
     } catch (error) {
       res.status(400).json({ error });
     }
@@ -40,6 +39,7 @@ router.post("/create_car", async (req, res) => {
 
   router.post("/valide_car", async (req, res) =>{
     try {
+      mail_reception_voiture(req,res);
       const car = await Car.findByIdAndUpdate(req.body.id,  { $set:{etat: '1'} });
       res.status(200).json({ status:200,car });
     } catch (error) {

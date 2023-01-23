@@ -4,6 +4,7 @@ const mail_reception=require("../mail/mail_reception");
 const jwt = require("jsonwebtoken");
 const nodemailer = require('nodemailer');
 const User = require("../models/user"); 
+const Car = require("../models/car");
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -17,22 +18,13 @@ const transporter = nodemailer.createTransport({
 });
 
 const mail_reception_voiture= async(req, res)=>{
-  console.log("userrrrrr",req.body.User);
-  const user_info=User.findById(req.body.User, function (err, docs) {
-    if (err){
-        console.log(err);
-    }
-    else{
-      return docs;
-        // console.log("Result : ", docs);
-    }
-});
+  const user_info = await Car.findById(req.body.id).populate("User");
   const options = {
     from: "harilovajohnny@gmail.com", // sender address
-    to: "harilovajohnny@gmail.com", // receiver email
+    to: user_info.User.email, // receiver email
     subject: "Accusé de reception d'un véhicule", // Subject line
     text: "Votre inscription à notre site  est bien réussie",
-    html:mail_reception(req.body.immatricule,req.body.marque,req.body.type)
+    html:mail_reception(user_info.immatriculation,user_info.marque,user_info.type)
   }
 
   try {
