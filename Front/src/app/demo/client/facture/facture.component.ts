@@ -15,6 +15,7 @@ import { ReceptionService } from 'src/app/services/reception.service';
 export default class FactureComponent implements OnInit {
   name: String;
   firstname: String;
+  email: String;
   public loading = false;
   list: any;
   detail: any;
@@ -26,6 +27,7 @@ export default class FactureComponent implements OnInit {
     this.authService.isClient();
     this.name = sessionStorage.getItem('name');
     this.firstname = sessionStorage.getItem('firstname');
+    this.email = sessionStorage.getItem('email');
   }
 
   ngOnInit(): void {
@@ -41,7 +43,6 @@ export default class FactureComponent implements OnInit {
       this.loading = false;
       this.list = response.reparation;
       this.detail = response.car;
-      console.log(this.list);
       this.total = this.list.reduce((accumulator, obj) => {
         return accumulator + obj.cout;
       }, 0);

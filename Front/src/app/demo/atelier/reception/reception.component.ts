@@ -57,6 +57,7 @@ export default class ReceptionComponent implements OnInit {
       if(response.status == 200){
         this.loading = false;
         this.message = "Le " + response.car.marque + " " + response.car.type + " est bien reçu" ;
+        window.location.reload();
       }
     };
     const onError = (response: any) => {
