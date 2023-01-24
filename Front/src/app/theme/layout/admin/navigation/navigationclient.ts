@@ -58,10 +58,10 @@ const NavigationclientItems = [
       },
       {
         id: 'reparation',
-        title: 'Voir Réparation',
+        title: 'Liste voiture',
         type: 'item',
         classes: 'nav-item',
-        url: '/list_reparation',
+        url: '/liste_voiture',
         icon: 'ti ti-vocabulary'
       }
     ]

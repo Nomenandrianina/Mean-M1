@@ -34,6 +34,10 @@ const routes: Routes = [
         loadComponent: () => import('./demo/client/home/home.component')
       },
       {
+        path: 'liste_voiture',
+        loadComponent: () => import('./demo/client/liste-voiture/liste-voiture.component')
+      },
+      {
         path: 'client/detail_reparation/:id',
         loadComponent: () => import('./demo/client/detail/detail.component')
       },
@@ -42,7 +46,7 @@ const routes: Routes = [
         loadComponent: () => import('./demo/client/bon-entre/bon-entre.component')
       },
       {
-        path: 'list_reparation',
+        path: 'list_reparation/:id',
         loadComponent: () => import('./demo/client/reparation/reparation.component')
       },
       {
