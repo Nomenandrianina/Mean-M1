@@ -20,6 +20,33 @@ export class AuthService {
     this.router = router;
   }
 
+  CheckConnexion(): boolean {
+    if  (localStorage.getItem('token') !== null && sessionStorage.getItem('email') !== null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  IsConnected(): void {
+    if ( !this.CheckConnexion()) {
+      this.router.navigateByUrl('/guest/login/client');
+    }
+  } 
+
+  Connected_client(): void {
+    if ( this.CheckConnexion()) {
+      this.router.navigateByUrl('/home/client');
+    }
+  }
+
+  logout(): void {
+    sessionStorage.removeItem('email');
+    // localStorage.removeItem('username');
+    localStorage.removeItem('token');
+    this.router.navigate(['/guest/login/client']);
+  }
+
   login(data){
     return this.http.post(urlLogin, data);
   }
@@ -35,6 +62,7 @@ export class AuthService {
         return false;
     }
   }
+
   isClient(): void{
     if (this.checkClient() == false){
       this.router.navigateByUrl('/guest/login/client');

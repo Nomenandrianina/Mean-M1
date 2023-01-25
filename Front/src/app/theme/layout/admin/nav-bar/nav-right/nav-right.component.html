@@ -160,10 +160,15 @@
                 <i class="ti ti-user"></i>
                 <span>Social Profile</span>
               </a>
-              <a [routerLink]="['/guest/login']" class="dropdown-item">
+              <button  class="dropdown-item" (click)="Deconnexion()">
+                 <i class="ti ti-logout"></i>
+                 <span>Logout</span>
+              </button>
+<!-- 
+              <button class="dropdown-item" (click)="Deconnexion()>
                 <i class="ti ti-logout"></i>
                 <span>Logout</span>
-              </a>
+              </button> -->
             </ng-scrollbar>
           </div>
         </div>

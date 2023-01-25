@@ -23,9 +23,9 @@ export default class LoginclientComponent {
     mdp:  new FormControl(null, [ Validators.required]),
   });
 
-  constructor(
-    private authService: AuthService,
-    private router: Router) { }
+  constructor(private authService: AuthService,private router: Router) { 
+    this.authService.Connected_client();  
+  }
 
   get email(){return this.loginForm.get('email'); }
   get mdp(){return this.loginForm.get('mdp'); }

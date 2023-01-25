@@ -13,5 +13,6 @@ import { AuthService } from 'src/app/services/auth.service';
 export default class HomeComponent {
   constructor(private authService: AuthService){
     this.authService.isClient();
+    this.authService.IsConnected();
   }
 }
