@@ -1,0 +1,34 @@
+<div class="row">
+  <app-card>
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-1" style="height: 439px;
+          border-left: 1px solid;"></div>
+      <div class="col-sm-5">
+        <div class="card text-center" *ngFor="let item of list">
+          <div class="card-header">
+            {{ item.Car.marque +' '+ item.Car.type}}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ item.type }}</h5>
+            <p class="card-text">{{ item.description }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+          <div class="card-footer text-muted">
+            Il y a {{ calculateDiff(item.date_debut) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-card>
+  <div class="my-container">
+    <ng-template #customLoadingTemplate>
+        <div class="custom-class">
+            <h3>
+                Loading...
+            </h3>
+        </div>
+    </ng-template>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+  </div>
+</div>

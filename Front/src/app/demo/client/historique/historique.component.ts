@@ -6,11 +6,12 @@ import { ReceptionService } from 'src/app/services/reception.service';
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { moveItemInArray, CdkDragDrop } from "@angular/cdk/drag-drop";
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-historique',
   standalone: true,
-  imports: [CommonModule, SharedModule, DragDropModule, Ng2SearchPipeModule],
+  imports: [CommonModule, SharedModule, DragDropModule, Ng2SearchPipeModule,RouterModule],
   templateUrl: './historique.component.html',
   styleUrls: ['./historique.component.scss']
 })

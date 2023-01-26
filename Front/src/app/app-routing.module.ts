@@ -46,6 +46,10 @@ const routes: Routes = [
         loadComponent: () => import('./demo/client/historique/historique.component')
       },
       {
+        path: 'client/historique/detail/:id',
+        loadComponent: () => import('./demo/client/historepair/historepair.component')
+      },
+      {
         path: 'bon_entree',
         loadComponent: () => import('./demo/client/bon-entre/bon-entre.component')
       },
