@@ -89,6 +89,14 @@ const NavigationclientItems = [
         icon: 'ti ti-vocabulary',
         target: true,
         external: true
+      },
+      {
+        id: 'historique',
+        title: 'Historique',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/client/historique',
+        icon: 'ti ti-vocabulary'
       }
     ]
   }
