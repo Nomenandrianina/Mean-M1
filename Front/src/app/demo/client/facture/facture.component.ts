@@ -22,7 +22,6 @@ export default class FactureComponent implements OnInit {
   message: any;
   total: Number;
 
-
   constructor(private authService: AuthService, private receptionService: ReceptionService){
     this.authService.isClient();
     this.name = sessionStorage.getItem('name');
@@ -52,7 +51,7 @@ export default class FactureComponent implements OnInit {
       this.message = response.message;
       this.loading = false;
     };
-    this.receptionService.getHistoriqueBycar(data).subscribe(onSuccess,onError);
+    this.receptionService.getFactureBycar(data).subscribe(onSuccess,onError);
   }
 
 }

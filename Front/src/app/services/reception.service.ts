@@ -23,6 +23,8 @@ const urlGetCarByUser = baseUrl + 'client/car/reparation';
 
 const urlGetRepHistorique = baseUrl + 'client/historique';
 
+const urlGetfacture= baseUrl + 'client/facture/id';
+
 const urlGetlistCarUser = baseUrl + 'client/liste_voiture'
 
 
@@ -68,6 +70,10 @@ export class ReceptionService {
 
   getHistoriqueBycar(data){
     return this.http.post(urlGetRepHistorique,data);
+  }
+
+  getFactureBycar(data){
+    return this.http.post(urlGetfacture,data);
   }
 
   get_All_Car_User(data){
