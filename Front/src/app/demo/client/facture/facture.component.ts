@@ -41,6 +41,7 @@ export default class FactureComponent implements OnInit {
     };
     const onSuccess = (response: any) => {
       this.loading = false;
+      console.log(response.reparation);
       this.list = response.reparation;
       this.detail = response.car;
       this.total = this.list.reduce((accumulator, obj) => {
@@ -51,7 +52,7 @@ export default class FactureComponent implements OnInit {
       this.message = response.message;
       this.loading = false;
     };
-    this.receptionService.getCarByUser(data).subscribe(onSuccess,onError);
+    this.receptionService.getHistoriqueBycar(data).subscribe(onSuccess,onError);
   }
 
 }

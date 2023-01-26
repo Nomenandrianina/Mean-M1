@@ -21,6 +21,8 @@ const urlUpdatereparation = baseUrl + 'update/avancement';
 
 const urlGetCarByUser = baseUrl + 'client/car/reparation';
 
+const urlGetRepHistorique = baseUrl + 'client/historique';
+
 const urlGetlistCarUser = baseUrl + 'client/liste_voiture'
 
 
@@ -62,6 +64,10 @@ export class ReceptionService {
 
   getCarByUser(data){
     return this.http.post(urlGetCarByUser,data);
+  }
+
+  getHistoriqueBycar(data){
+    return this.http.post(urlGetRepHistorique,data);
   }
 
   get_All_Car_User(data){
