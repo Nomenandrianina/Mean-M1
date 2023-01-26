@@ -15,7 +15,8 @@
           <th>Matricule</th>
           <th>Marques</th>
           <th>Types</th>
-          <th>Description</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -27,6 +28,11 @@
           <td>
             <a routerLink="/list_reparation/{{ car._id }}">
               <button class="btn btn-primary" >Voir réparation</button>
+            </a>
+          </td>
+          <td>
+            <a routerLink="/list_reparation/{{ car._id }}">
+              <button class="btn btn-primary" >facture</button>
             </a>
           </td>
         </tr>

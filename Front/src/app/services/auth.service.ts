@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   CheckConnexion(): boolean {
-    if  (localStorage.getItem('token') !== null && sessionStorage.getItem('email') !== null) {
+    if  (localStorage.getItem('token') !== null && sessionStorage.getItem('id') !== null) {
       return true;
     } else {
       return false;
@@ -40,9 +40,19 @@ export class AuthService {
     }
   }
 
+  Check_Connected_atelier(): void {
+    if ( this.CheckConnexion()) {
+      this.router.navigateByUrl('/home/atelier');
+    }
+  }
+
   logout(): void {
+    sessionStorage.removeItem('name');
+    sessionStorage.removeItem('firstname');
     sessionStorage.removeItem('email');
-    // localStorage.removeItem('username');
+    sessionStorage.removeItem('photo');
+    sessionStorage.removeItem('role');
+    sessionStorage.removeItem('id');
     localStorage.removeItem('token');
     this.router.navigate(['/guest/login/client']);
   }
