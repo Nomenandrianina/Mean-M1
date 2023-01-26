@@ -1,7 +1,9 @@
 <div class="row">
   <app-card>
     <div class="row">
-      <div class="col-sm-6"></div>
+      <div class="col-sm-6">
+        <img  [src]="car.image" style="width: 451px;height: 379px;border-radius: 102px;"  alt="image">
+      </div>
       <div class="col-sm-1" style="height: 439px;
           border-left: 1px solid;"></div>
       <div class="col-sm-5">
@@ -12,7 +14,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ item.type }}</h5>
             <p class="card-text">{{ item.description }}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a class="btn btn-outline-secondary">${{ item.cout }}</a>
           </div>
           <div class="card-footer text-muted">
             Il y a {{ calculateDiff(item.date_debut) }}

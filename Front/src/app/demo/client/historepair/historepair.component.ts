@@ -24,6 +24,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 })
 export default class HistorepairComponent {
   list: any;
+  car: any;
   id = this.route.snapshot.paramMap.get('id');
   message: any;
   public loading = false;
@@ -47,6 +48,7 @@ export default class HistorepairComponent {
     const onSuccess = (response: any) => {
       this.loading = false;
       this.list = response.reparation;
+      this.car = response.car;
     };
     const onError = (response: any) => {
       this.message = response.message;
