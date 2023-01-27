@@ -23,7 +23,7 @@ const urlGetCarByUser = baseUrl + 'client/car/reparation';
 
 const urlGetRepHistorique = baseUrl + 'client/historique';
 
-const urlGetfacture= baseUrl + 'client/facture/id';
+const urlGetfacture= baseUrl + 'client/facture';
 
 const urlGetlistCarUser = baseUrl + 'client/liste_voiture'
 

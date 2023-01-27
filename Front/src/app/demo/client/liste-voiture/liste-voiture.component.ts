@@ -16,7 +16,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-liste-voiture',
-  standalone: true, 
+  standalone: true,
   imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule,NgxLoadingModule,ProgressBarModule,Ng2SearchPipeModule],
   templateUrl: './liste-voiture.component.html',
   styleUrls: ['./liste-voiture.component.scss']
@@ -41,15 +41,14 @@ export default class ListeVoitureComponent implements OnInit {
       user: sessionStorage.getItem('id')
     };
     const onSuccess = (response: any) => {
-     
+
       this.loading = false;
       this.list = response.car;
-      console.log('reponse',this.list);
     };
     const onError = (response: any) => {
       this.message = response.message;
       this.loading = false;
-    };  
+    };
     this.receptionService.get_All_Car_User(data).subscribe(onSuccess,onError);
   }
 }

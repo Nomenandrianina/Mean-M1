@@ -58,7 +58,7 @@ const routes: Routes = [
         loadComponent: () => import('./demo/client/reparation/reparation.component')
       },
       {
-        path: 'facture',
+        path: 'facture/:id',
         loadComponent: () => import('./demo/client/facture/facture.component')
       },
       {

@@ -41,7 +41,6 @@ export default class ReparationComponent implements OnInit {
 
   getCarUser(): void{
     this.loading = true;
-    console.log("id",this.id);
     const data = {
       user: sessionStorage.getItem('id'),
       id: this.id

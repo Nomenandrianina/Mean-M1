@@ -73,14 +73,6 @@ const NavigationclientItems = [
     icon: 'icon-navigation',
     children: [
       {
-        id: 'facture',
-        title: 'Facture',
-        type: 'item',
-        url: '/facture',
-        classes: 'nav-item',
-        icon: 'ti ti-brand-chrome'
-      },
-      {
         id: 'etat de paiement',
         title: 'Paiement',
         type: 'item',
