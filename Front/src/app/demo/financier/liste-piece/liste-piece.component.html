@@ -1,17 +1,23 @@
 <div class="row">
   <app-card cardTitle="Réception des voitures">
     <div class="form-group">
+      <span style="padding-left:82%;padding-bottom: 20px;">
+        <button class="btn btn-success" >+ Nouveau pièce</button>
+      </span>
+    </div>
+    <div class="form-group">
       <div class="col-md-3">
       <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm"/>
       </div>
     </div>
-    <table   class="table">
+    <table  class="table">
       <thead>
         <tr>
           <th>Images</th>
           <th>Nom</th>
           <th>Prix</th>
           <th>main_oeuvre </th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +26,9 @@
           <td>{{ pieces.piece_name }}</td>
           <td>{{ pieces.prix }}</td>
           <td>{{ pieces.main_oeuvre }}</td>
+          <td>  
+            <button class="btn btn-danger" >delete</button>
+          </td>
         </tr>
       </tbody>
     </table>
