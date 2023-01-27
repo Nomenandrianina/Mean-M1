@@ -5,7 +5,7 @@ const userroutes = require('./controllers/user_controllers');
 const carroutes = require('./controllers/car_controllers');
 const reparationroutes = require('./controllers/reparation_controllers');
 const paiementroutes = require('./controllers/paiement_controller');
-
+const pieceroutes = require('./controllers/piece_controller');
 
 const cors = require('cors');
 var corsOptions = {
@@ -27,4 +27,5 @@ app.use(userroutes);
 app.use(carroutes);
 app.use(reparationroutes);
 app.use(paiementroutes);
+app.use(pieceroutes);
 app.listen(port, () => console.log('Server app listening on port ' + port));

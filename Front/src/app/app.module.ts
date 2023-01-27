@@ -32,6 +32,7 @@ import { SharedModule } from './theme/shared/shared.module';
 import { ConfigurationComponent } from './theme/layout/admin/configuration/configuration.component';
 import { GuestComponent } from './theme/layout/guest/guest.component';
 import { NavigationAtelierItem } from './theme/layout/admin/navigation/navigationAtelier';
+import { BonsortieComponent } from './demo/atelier/bonsortie/bonsortie.component';
 
 
 
@@ -57,7 +58,8 @@ import { NavigationAtelierItem } from './theme/layout/admin/navigation/navigatio
     NavItemComponent,
     NavCollapseComponent,
     ConfigurationComponent,
-    GuestComponent
+    GuestComponent,
+    BonsortieComponent
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule,HttpClientModule,NgxLoadingModule.forRoot({}),NgCircleProgressModule.forRoot({
     // set defaults here
