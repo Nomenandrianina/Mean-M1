@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 export default class HomeComponent implements OnInit{
   constructor(private authService: AuthService){
-    // this.authService.IsConnected();
+    // this.authService.Check_Connected_financier();
   }
   ngOnInit(): void {
     // throw new Error('Method not implemented.');

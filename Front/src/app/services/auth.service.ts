@@ -46,6 +46,12 @@ export class AuthService {
     }
   }
 
+  Check_Connected_financier(): void {
+    if (!this.CheckConnexion()) {
+      this.router.navigateByUrl('/guest/login');
+    }
+  }
+
   logout(): void {
     sessionStorage.removeItem('name');
     sessionStorage.removeItem('firstname');

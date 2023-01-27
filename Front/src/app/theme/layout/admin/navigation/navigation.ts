@@ -43,37 +43,29 @@ const NavigationItems = [
     ]
   },
   {
-    id: 'page',
-    title: 'Pages',
+    id: 'other',
+    title: 'Objets',
     type: 'group',
     icon: 'icon-navigation',
     children: [
       {
-        id: 'Authentication',
-        title: 'Authentication',
-        type: 'collapse',
-        icon: 'ti ti-key',
-        children: [
-          {
-            id: 'login',
-            title: 'Pièces',
-            type: 'item',
-            url: '/',
-            target: true,
-            breadcrumbs: false
-          },
-          {
-            id: 'register',
-            title: 'Register',
-            type: 'item',
-            url: '/guest/register',
-            target: true,
-            breadcrumbs: false
-          }
-        ]
+        id: 'etat de paiement',
+        title: 'Pièces',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/home/financier/pieces',
+        icon: 'ti ti-vocabulary'
+      },
+      {
+        id: 'historique',
+        title: 'Historique',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/client/historique',
+        icon: 'ti ti-vocabulary'
       }
     ]
-  },
+  }
   // {
   //   id: 'elements',
   //   title: 'Elements',

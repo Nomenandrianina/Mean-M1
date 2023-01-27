@@ -92,6 +92,10 @@ const routes: Routes = [
       {
         path: 'home/financier',
         loadComponent: () => import('./demo/financier/home/home.component')
+      },
+      {
+        path: 'home/financier/pieces',
+        loadComponent: () => import('./demo/financier/liste-piece/liste-piece.component')
       }
     ]
   },

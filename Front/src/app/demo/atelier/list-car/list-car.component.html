@@ -7,7 +7,6 @@
   </div>
   <div class="modal-body">
     <div class="table-responsive pt-3" [formGroup]="addForm">
-
       <!-- table-dark -->
       <table class="table" >
         <thead class="table-dark">
@@ -73,12 +72,7 @@
 <div class="row">
   <app-card cardTitle="Réception des voitures">
     <div class="form-group">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search..."
-        [(ngModel)]="filterTerm"
-      />
+      <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm"/>
     </div>
     <table   class="table">
       <thead>
@@ -107,7 +101,6 @@
         </tr>
       </tbody>
     </table>
-
   </app-card>
 </div>
 

@@ -22,7 +22,7 @@ export class FinancerService {
     return this.http.post(urlAddPiece, data);
   }
 
-  getCar(){
+  getAllPiece(){
     return this.http.get(urlGetAllPiece);
   }
 

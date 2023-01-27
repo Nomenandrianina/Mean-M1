@@ -37,8 +37,7 @@ router.post("/signup", async (req, res) => {
       res.status(400).json({ error });
     }
   });
-
-router.post("/login", async (req, res) => {
+  router.post("/login", async (req, res) => {
     try {
       // check if the user exists
       const user = await User.findOne({ email: req.body.email }).populate("Role");

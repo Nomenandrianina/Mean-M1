@@ -1,1 +1,38 @@
-<p>liste-piece works!</p>
+<div class="row">
+  <app-card cardTitle="Réception des voitures">
+    <div class="form-group">
+      <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm"/>
+      </div>
+    </div>
+    <table   class="table">
+      <thead>
+        <tr>
+          <th>Images</th>
+          <th>Nom</th>
+          <th>Prix</th>
+          <th>main_oeuvre </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pieces of list | filter: filterTerm">
+          <td><img src="{{ pieces.photo }}" alt="" style="width: 100px;border-radius: 5px;"></td>
+          <td>{{ pieces.piece_name }}</td>
+          <td>{{ pieces.prix }}</td>
+          <td>{{ pieces.main_oeuvre }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </app-card>
+</div>
+
+<div class="my-container">
+  <ng-template #customLoadingTemplate>
+      <div class="custom-class">
+          <h3>
+              Loading...
+          </h3>
+      </div>
+  </ng-template>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+</div>
