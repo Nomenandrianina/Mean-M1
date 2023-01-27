@@ -47,7 +47,7 @@ export default class LoginComponent {
               this.router.navigateByUrl('/home/atelier');
             }
             if(response.user.Role.name == 'Financier'){
-              this.router.navigateByUrl('/');
+              this.router.navigateByUrl('/home/financier');
             }
       }else{
         this.loading = false;

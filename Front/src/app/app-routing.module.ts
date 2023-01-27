@@ -88,6 +88,10 @@ const routes: Routes = [
       {
         path: 'home/atelier',
         loadComponent: () => import('./demo/atelier/home/home.component')
+      },
+      {
+        path: 'home/financier',
+        loadComponent: () => import('./demo/financier/home/home.component')
       }
     ]
   },

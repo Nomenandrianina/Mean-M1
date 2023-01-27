@@ -33,10 +33,9 @@ import { ConfigurationComponent } from './theme/layout/admin/configuration/confi
 import { GuestComponent } from './theme/layout/guest/guest.component';
 import { NavigationAtelierItem } from './theme/layout/admin/navigation/navigationAtelier';
 import { BonsortieComponent } from './demo/atelier/bonsortie/bonsortie.component';
-
-
-
-
+// import { HomeComponent } from './demo/financier/home/home.component';
+// import { ListePieceComponent } from './demo/financier/liste-piece/liste-piece.component';
+// import { AddPieceComponent } from './demo/financier/add-piece/add-piece.component';
 
 
 
@@ -59,7 +58,10 @@ import { BonsortieComponent } from './demo/atelier/bonsortie/bonsortie.component
     NavCollapseComponent,
     ConfigurationComponent,
     GuestComponent,
-    BonsortieComponent
+    BonsortieComponent,
+    // HomeComponent,
+    // ListePieceComponent,
+    // AddPieceComponent
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule,HttpClientModule,NgxLoadingModule.forRoot({}),NgCircleProgressModule.forRoot({
     // set defaults here

@@ -18,7 +18,6 @@ router.post("/financier/add_piece", async (req, res) =>{
     }
 });
 
-
 router.get("/financier/get_piece", async (req, res) =>{
     try {
         const piece = await Piece.find();
