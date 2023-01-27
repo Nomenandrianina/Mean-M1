@@ -8,11 +8,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup,  FormControl} from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { NgxLoadingModule } from 'ngx-loading';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-paiement',
   standalone: true,
-  imports: [CommonModule, SharedModule,ReactiveFormsModule,NgxLoadingModule],
+  imports: [CommonModule, SharedModule,ReactiveFormsModule,NgxLoadingModule,Ng2SearchPipeModule],
   templateUrl: './paiement.component.html',
   styleUrls: ['./paiement.component.scss']
 })
@@ -20,6 +21,7 @@ export default class PaiementComponent implements OnInit {
   detail: any;
   public loading = false;
   message: any;
+  filterTerm!: string;
 
   constructor(private authService: AuthService, private receptionService: ReceptionService, private router: Router,private route: ActivatedRoute){
     this.authService.isClient();

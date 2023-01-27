@@ -1,1 +1,32 @@
-<p>paiement works!</p>
+<div class="row">
+  <app-card cardTitle="Listes des paiements">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search..."
+        [(ngModel)]="filterTerm"
+      />
+    </div>
+    <table   class="table datatable-table">
+      <thead>
+        <tr>
+          <th>Images</th>
+          <th>Voitures</th>
+          <th>Objet à réparer</th>
+          <th>Coût</th>
+          <th>status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of detail | filter: filterTerm">
+          <td><img src="{{ car.image }}" alt="" style="width: 100px;border-radius: 5px;"></td>
+          <td>{{ car.immatriculation }}</td>
+          <td>{{ car.marque }}</td>
+          <td>{{ car.type }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </app-card>
+</div>
