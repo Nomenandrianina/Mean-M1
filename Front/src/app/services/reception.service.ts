@@ -27,7 +27,9 @@ const urlGetRepHistorique = baseUrl + 'client/historique';
 
 const urlGetfacture= baseUrl + 'client/facture';
 
-const urlGetlistCarUser = baseUrl + 'client/liste_voiture'
+const urlGetlistCarUser = baseUrl + 'client/liste_voiture';
+
+const paiement = baseUrl + 'client/paiement';
 
 
 
@@ -84,5 +86,9 @@ export class ReceptionService {
 
   get_All_Car_User(data){
     return this.http.post(urlGetlistCarUser,data);
+  }
+
+  SendPaiement(data){
+    return this.http.post(paiement,data);
   }
 }

@@ -10,7 +10,6 @@ const router = Router();
 
 router.post("/create_car", async (req, res) => {
     try {
-
       const car = await Car.create({
         image: req.body.image,
         marque: req.body.marque,

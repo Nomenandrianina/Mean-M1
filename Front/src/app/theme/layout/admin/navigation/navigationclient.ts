@@ -77,10 +77,8 @@ const NavigationclientItems = [
         title: 'Paiement',
         type: 'item',
         classes: 'nav-item',
-        url: 'https://codedthemes.gitbook.io/berry-angular/',
-        icon: 'ti ti-vocabulary',
-        target: true,
-        external: true
+        url: '/client/list/paiement',
+        icon: 'ti ti-vocabulary'
       },
       {
         id: 'historique',

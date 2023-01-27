@@ -127,7 +127,9 @@
                         <hr />
 
                         <div *ngIf="checkStatus(list) == true">
-                            <a href="#" class="btn btn-info btn-bold px-4 float-right mt-3 mt-lg-0">Payer maintenant</a>
+                          <form (ngSubmit)="paiement()" [formGroup]="form"  method="POST">
+                            <button type="submit" class="btn btn-info btn-bold px-4 float-right mt-3 mt-lg-0">Payer maintenant</button>
+                          </form>
                         </div>
 
 
@@ -143,4 +145,14 @@
 
 
   </app-card>
+  <div class="my-container">
+    <ng-template #customLoadingTemplate>
+        <div class="custom-class">
+            <h3>
+                Loading...
+            </h3>
+        </div>
+    </ng-template>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+  </div>
 </div>

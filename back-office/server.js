@@ -4,6 +4,7 @@ const roleroutes = require('./controllers/role_controllers');
 const userroutes = require('./controllers/user_controllers');
 const carroutes = require('./controllers/car_controllers');
 const reparationroutes = require('./controllers/reparation_controllers');
+const paiementroutes = require('./controllers/paiement_controller');
 
 
 const cors = require('cors');
@@ -25,4 +26,5 @@ app.use(roleroutes);
 app.use(userroutes); 
 app.use(carroutes);
 app.use(reparationroutes);
+app.use(paiementroutes);
 app.listen(port, () => console.log('Server app listening on port ' + port));

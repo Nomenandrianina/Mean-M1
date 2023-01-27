@@ -13,6 +13,3 @@ const Role = new Schema({
 const role = mongoose.model('role',Role);
 
 module.exports = role;
-
-// 0344506016
-// rap'dy
