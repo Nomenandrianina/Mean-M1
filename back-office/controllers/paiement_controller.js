@@ -26,5 +26,15 @@ router.post("/client/paiement", async (req, res) => {
   });
 
 
+  router.get("/client/list/paiement", async (req, res) => {
+    try {
+        const paie = await Paiement.find().populate(["User","Car","Reparation"]);
+        res.status(200).json({status:200,paie});
+    } catch (error) {
+      res.status(400).json({ error });
+    }
+  });
+
+
 
   module.exports = router;

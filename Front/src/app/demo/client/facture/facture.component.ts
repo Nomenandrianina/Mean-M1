@@ -97,6 +97,7 @@ export default class FactureComponent implements OnInit {
       if (response.status === 200){
         this.loading = false;
         this.message = true;
+        this.router.navigateByUrl('/client/list/paiement');
       }else{
         this.loading = false;
       }

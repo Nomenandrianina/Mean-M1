@@ -31,6 +31,8 @@ const urlGetlistCarUser = baseUrl + 'client/liste_voiture';
 
 const paiement = baseUrl + 'client/paiement';
 
+const getAllpaiement = baseUrl + 'client/list/paiement';
+
 
 
 
@@ -90,5 +92,9 @@ export class ReceptionService {
 
   SendPaiement(data){
     return this.http.post(paiement,data);
+  }
+
+  getAllpaiement(){
+    return this.http.get(getAllpaiement);
   }
 }

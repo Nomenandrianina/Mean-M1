@@ -16,8 +16,30 @@ import { NgxLoadingModule } from 'ngx-loading';
   templateUrl: './paiement.component.html',
   styleUrls: ['./paiement.component.scss']
 })
-export default class PaiementComponent {
+export default class PaiementComponent implements OnInit {
+  detail: any;
+  public loading = false;
+  message: any;
+
   constructor(private authService: AuthService, private receptionService: ReceptionService, private router: Router,private route: ActivatedRoute){
     this.authService.isClient();
+  }
+
+  ngOnInit(): void {
+    this.getAllPaiement();
+  }
+
+  getAllPaiement(){
+    this.loading = true;
+    const onSuccess = (response: any) => {
+      this.loading = false;
+      this.detail = response.paie;
+      console.log(this.detail);
+    };
+    const onError = (response: any) => {
+      this.loading = false;
+      this.message = response.message;
+    };
+    this.receptionService.getAllpaiement().subscribe(onSuccess,onError);
   }
 }
