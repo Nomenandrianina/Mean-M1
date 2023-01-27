@@ -19,6 +19,8 @@ const urlgetReparationById = baseUrl + 'reparation/id';
 
 const urlUpdatereparation = baseUrl + 'update/avancement';
 
+const urlTerminerReparation = baseUrl + 'terminer/reparation';
+
 const urlGetCarByUser = baseUrl + 'client/car/reparation';
 
 const urlGetRepHistorique = baseUrl + 'client/historique';
@@ -62,6 +64,10 @@ export class ReceptionService {
 
   updateReparation(data){
     return this.http.post(urlUpdatereparation,data);
+  }
+
+  terminerReparation(data){
+    return this.http.post(urlTerminerReparation,data);
   }
 
   getCarByUser(data){

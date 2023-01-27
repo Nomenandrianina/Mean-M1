@@ -95,12 +95,11 @@
         </div>
 
         <form (ngSubmit)="onsubmit()"  [formGroup]="form"  method="POST">
-        <div class="row">
+        <div class="row" *ngIf="list.avancement < 100 && list.status == 'En cours'">
           <div class="col-md-9">
             <div class="card mb-4 mb-md-0">
               <div class="card-body">
                   <div class="row">
-                    <!-- (ngSubmit)="onSubmit()" -->
                     <div class="col-sm-5">
                       <p class="mb-0">Edition de l'avancement</p>
                     </div>
@@ -120,6 +119,30 @@
           </div>
         </div>
       </form>
+
+      <form (ngSubmit)="terminer()"  [formGroup]="termineForm"  method="POST">
+      <div class="row" *ngIf="list.avancement == 100 && list.status == 'En cours'">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <button type="submit" class="btn btn-success" style="width: 100%;">Terminer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </form>
+
+      <div class="row" *ngIf="list.avancement == 100 && list.status == 'Terminer'">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <button  class="btn btn-success" style="width: 100%;" disabled>Terminer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       </div>
     </div>
     <div class="my-container">

@@ -41,7 +41,6 @@ export default class ListeVoitureComponent implements OnInit {
       user: sessionStorage.getItem('id')
     };
     const onSuccess = (response: any) => {
-
       this.loading = false;
       this.list = response.car;
     };

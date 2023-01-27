@@ -55,4 +55,17 @@ export default class FactureComponent implements OnInit {
     this.receptionService.getFactureBycar(data).subscribe(onSuccess,onError);
   }
 
+  checkStatus(data){
+    var reponse = false;
+    data.forEach(element => {
+        if(element.status == 'Terminer'){
+          reponse = true;
+        }else{
+          reponse = false;
+        }
+    });
+
+    return reponse;
+  }
+
 }
