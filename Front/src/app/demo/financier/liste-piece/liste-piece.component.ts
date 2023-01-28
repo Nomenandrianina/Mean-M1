@@ -24,6 +24,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 export default class ListePieceComponent implements OnInit{
   list: any;
   public loading = false;
+  message_delete:boolean=false;
   filterTerm: string;
   main_oeuvre:"main d'oeuvre"
   constructor(private financierservice: FinancerService,private router: Router){
@@ -41,8 +42,6 @@ export default class ListePieceComponent implements OnInit{
     };
     const onError = (response: any) => {
       this.loading = false;
-      console.log(response.message)
-      // this.message = response.message;
     };
     this.financierservice.getAllPiece().subscribe(onSuccess,onError);
   }
@@ -51,6 +50,36 @@ export default class ListePieceComponent implements OnInit{
     this.loading = true;
     this.loading = false;
     this.router.navigate(['/financier/nouveau_piece']);
+  }
+
+  Delete_piece(id):void{
+    this.loading = true;
+    
+    const onSuccess = (response: any) => {
+      this.loading = false;
+      this.show_message_success();
+      this.list=response.piece;
+    };
+
+    const onError = (response: any) => {
+      this.loading = false;
+    };
+
+    const data = {
+      id: id
+    };
+    this.financierservice.delete_piece(data).subscribe(onSuccess,onError);
+  }
+
+  show_message_success(){
+    this.message_delete=true;
+    setTimeout(()=>{  
+      this.message_delete = false;
+    }, 4000);
+  }
+  
+  removeMessage(){
+    this.message_delete = false;
   }
   
 }

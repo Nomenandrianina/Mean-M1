@@ -27,4 +27,19 @@ router.get("/financier/get_piece", async (req, res) =>{
     }
 });
 
+
+router.post("/financier/delete_piece", async (req, res) =>{
+    try {
+        test:String;
+        
+        const delete_piece = await Piece.findByIdAndRemove(req.body.id);
+        if(delete_piece){
+            const piece = await Piece.find();
+            res.status(200).json({ status:200,piece });
+        }
+    } catch (error) {
+      res.status(400).json({ error });
+    }
+});
+
 module.exports = router;

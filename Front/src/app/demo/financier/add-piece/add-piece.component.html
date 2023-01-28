@@ -1,4 +1,8 @@
-<div >
+<div *ngIf="message" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Nouveau pièce enregistré!</strong>
+  <button type="button" (click)="removeMessage" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div>
   <form  [formGroup]="form"  (ngSubmit)="onSubmit()"  method="POST">
       <app-card cardTitle="* Champs requis">
         <div class="col-sm-5" style="padding-left: 10%;">

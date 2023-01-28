@@ -27,6 +27,8 @@ export default class AddPieceComponent implements OnInit{
   piece_name_required:string;
   prix_required:string;
   main_oeuvre_required:string;
+  message: boolean=false;
+
 
   form = new FormGroup({
     photo: new FormControl(null, [Validators.required]),
@@ -57,37 +59,38 @@ export default class AddPieceComponent implements OnInit{
     };
   }
 
+  show_message_success(){
+    this.message=true;
+    setTimeout(()=>{                           // <<<---using ()=> syntax
+      this.message = false;
+    }, 4000);
+  }
+
+  removeMessage(){
+    this.message = false;
+  }
+
   onSubmit(){
     this.loading = true;
     const onSuccess = (response: any) => {
       if (response.status === 200){
         this.loading = false;
+        this.show_message_success();
         this.imageSrc = '../../../../assets/images/add-icon.svg';
         this.form.reset();
       }else{
         this.loading = false;
-        this.form.reset();
       }
     };
 
     const onError = (response: any) => {
-      // console.log("erreur",response.error.error.errors);
       this.list_erreur=response.error.error.errors;
-      // if(this.list_erreur.photo){
-        this.photo_required=this.list_erreur.photo;
-      // }
-      if(this.list_erreur.piece_name){
-        this.piece_name_required=this.list_erreur.piece_name;
-      }
-      if(this.list_erreur.prix){
-        this.prix_required=this.list_erreur.prix;
-      }
-      if(this.list_erreur.main_oeuvre){
-        this.main_oeuvre_required=this.list_erreur.main_oeuvre;
-      }
-
+      this.photo_required=this.list_erreur.photo;
+      this.piece_name_required=this.list_erreur.piece_name;
+      this.prix_required=this.list_erreur.prix;
+      this.main_oeuvre_required=this.list_erreur.main_oeuvre;
       this.loading = false;
-      this.form.reset();
+      // this.form.reset();
     };
 
     const data = {
