@@ -48,6 +48,8 @@ export default class ListePieceComponent implements OnInit{
   }
 
   Add_new_piece():void{
+    this.loading = true;
+    this.loading = false;
     this.router.navigate(['/financier/nouveau_piece']);
   }
   

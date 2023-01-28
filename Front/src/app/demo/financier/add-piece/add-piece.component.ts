@@ -20,7 +20,7 @@ import { FinancerService } from 'src/app/services/financer.service';
   styleUrls: ['./add-piece.component.scss']
 })
 export default class AddPieceComponent implements OnInit{
-  imageSrc: String = '../../../../assets/images/add-icon.svg';
+  imageSrc: String = '../../../../assets/images/photo_icon.png';
   public loading = false;
   list_erreur:any;
   photo_required:string;
@@ -38,23 +38,11 @@ export default class AddPieceComponent implements OnInit{
   constructor(private financierservice:FinancerService){}
 
   ngOnInit(): void {
-
-    if(this.list_erreur!=null){
-        console.log('ohoto',this.list_erreur.photo);
-        if(this.list_erreur.photo){
-          this.photo_required=this.list_erreur.photo;
-        }
-        if(this.list_erreur.piece_name){
-          this.piece_name_required=this.list_erreur.piece_name;
-        }
-        if(this.list_erreur.prix){
-          this.prix_required=this.list_erreur.prix;
-        }
-        if(this.list_erreur.main_oeuvre){
-          this.main_oeuvre_required=this.list_erreur.main_oeuvre;
-        }
-    }
-    // console.log('all_errier',this.list_erreur);
+    // if(this.list_erreur!=undefined){
+    //     console.log('ohoto',this.list_erreur.photo);
+        
+    // }
+    console.log('all_errier',this.list_erreur);
   }
 
   onChange(event){
@@ -85,6 +73,19 @@ export default class AddPieceComponent implements OnInit{
     const onError = (response: any) => {
       // console.log("erreur",response.error.error.errors);
       this.list_erreur=response.error.error.errors;
+      // if(this.list_erreur.photo){
+        this.photo_required=this.list_erreur.photo;
+      // }
+      if(this.list_erreur.piece_name){
+        this.piece_name_required=this.list_erreur.piece_name;
+      }
+      if(this.list_erreur.prix){
+        this.prix_required=this.list_erreur.prix;
+      }
+      if(this.list_erreur.main_oeuvre){
+        this.main_oeuvre_required=this.list_erreur.main_oeuvre;
+      }
+
       this.loading = false;
       this.form.reset();
     };
