@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 // create Reparation schema & model
 const Reparation = new Schema({
-    type: {
-        type: String,
-        required: [true, 'Type field is required']
+    Piece: {
+        type: mongoose.Types.ObjectId, 
+        ref: "piece"
     },
     date_debut: {
         type: Date,
@@ -25,7 +25,7 @@ const Reparation = new Schema({
         max: 100,
         required: [true, 'Type field is required']
     },
-    cout: {
+    quantite: {
         type: Number,
         required: [true, 'Type field is required']
     },

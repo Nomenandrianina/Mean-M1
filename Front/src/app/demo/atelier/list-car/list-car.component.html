@@ -12,14 +12,14 @@
         <thead class="table-dark">
           <tr>
             <th>
-              Type
+              Pièces
             </th>
 
             <th>
-              Description
+              Descriptions
             </th>
             <th>
-              Coût
+              Quantités
             </th>
           </tr>
         </thead>
@@ -27,7 +27,10 @@
           <tr id="ligne" *ngFor="let row of addForm.get('rows')['controls'];let index = index;">
             <td>
               <div class="col-sm-8">
-                <input class="form-control"  [formControl]="row.get('type')"  type="text"  rows="3" min="0" max="50">
+                <input class="form-control"  type="text"  rows="3" min="0" max="50" style="display: none">
+                <select class="form-select" [formControl]="row.get('piece')" aria-label="Default select example"  rows="3">
+                  <option *ngFor="let item of piece" value="{{ item._id }}">{{ item.piece_name }}</option>
+                </select>
               </div>
             </td>
 
@@ -39,7 +42,7 @@
 
             <td>
               <div class="col-sm-8">
-                <input class="form-control" type="number" [formControl]="row.get('cout')"  rows="3" min="0" max="50">
+                <input class="form-control" type="number" [formControl]="row.get('quantite')"  rows="3" min="0" max="50">
               </div>
             </td>
 

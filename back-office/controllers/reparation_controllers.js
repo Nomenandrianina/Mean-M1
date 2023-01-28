@@ -12,16 +12,16 @@ router.post("/add_reparation", async (req, res) => {
         const reparation = [];
         const body = req.body.reparation;
         const datenow = Date.now();
-        const today = new Date(datenow);
+        console.log("Reparation: ",body);
             for(var i=0;i<body.length;i++){
                 data = 
                     {
-                        "type": body[i].type,
+                        "Piece": body[i].piece,
                         "date_debut": datenow,
                         "date_fin": null,
                         "description": body[i].description,
                         "avancement": 0,
-                        "cout": body[i].cout,
+                        "quantite": body[i].quantite,
                         "status": 'En cours',
                         "Car": req.body.Car
                     };
@@ -40,7 +40,7 @@ router.post("/add_reparation", async (req, res) => {
 
   router.get("/all_reparation", async (req, res) => {
     try {
-        const reparation = await Reparation.find().populate("Car");
+        const reparation = await Reparation.find().populate(["Car","Piece"]);
         res.status(200).json({ status:200,reparation });
     } catch (error) {
         res.status(400).json({ error });
@@ -49,7 +49,7 @@ router.post("/add_reparation", async (req, res) => {
 
   router.post("/reparation/id", async (req, res) =>{
     try {
-      const reparation = await Reparation.findById(req.body.id).populate("Car");
+      const reparation = await Reparation.findById(req.body.id).populate(["Car","Piece"]);
       res.status(200).json({ status:200,reparation });
     } catch (error) {
       res.status(400).json({ error });

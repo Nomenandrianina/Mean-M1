@@ -23,6 +23,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 export default class ListCarComponent implements OnInit{
   filterTerm: string;
   list: any;
+  piece: any;
   message: any;
   closeResult: string;
   modalOptions:NgbModalOptions;
@@ -49,6 +50,7 @@ export default class ListCarComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.getPieces();
     this.getCar();
   }
 
@@ -67,7 +69,8 @@ export default class ListCarComponent implements OnInit{
     const data = {
       Car: this.idcar,
       reparation:  this.rows.getRawValue()
-    }
+    };
+    console.log(data);
     this.modalService.dismissAll();
     const onSuccess = (response: any) => {
       if(response.status == 200){
@@ -92,7 +95,19 @@ export default class ListCarComponent implements OnInit{
     }
   }
 
-
+  getPieces(): void{
+    this.loading = true;
+    const onSuccess = (response: any) => {
+      this.loading = false;
+      this.piece = response.piece;
+      console.log("All piece",this.piece);
+    };
+    const onError = (response: any) => {
+      this.loading = false;
+      this.message = response.message;
+    };
+    this.receptionService.getAllpiece().subscribe(onSuccess,onError);
+  }
 
   getCar(): void{
     this.loading = true;
@@ -119,9 +134,9 @@ export default class ListCarComponent implements OnInit{
 
   createItemFormGroup(): FormGroup {
     return this.fb.group({
-      type: null,
+      piece: null,
       description: null,
-      cout: null,
+      quantite: null,
       statut: 'En cours',
     });
   }

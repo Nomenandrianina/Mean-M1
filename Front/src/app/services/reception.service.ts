@@ -33,6 +33,8 @@ const paiement = baseUrl + 'client/paiement';
 
 const getAllpaiement = baseUrl + 'client/list/paiement';
 
+const getAllPiece = baseUrl + 'financier/get_piece';
+
 
 
 
@@ -96,5 +98,9 @@ export class ReceptionService {
 
   getAllpaiement(){
     return this.http.get(getAllpaiement);
+  }
+
+  getAllpiece(){
+    return this.http.get(getAllPiece);
   }
 }

@@ -55,6 +55,7 @@ export default class DetailComponent implements OnInit{
     const onSuccess = (response: any) => {
       this.loading = false;
       this.list = response.reparation;
+      console.log(this.list);
     };
     const onError = (response: any) => {
       this.loading = false;
