@@ -81,16 +81,18 @@
 
                     <div class="mt-4">
                         <div class="row text-600 text-white bgc-default-tp1 py-25">
-                            <div class="d-none d-sm-block col-5">Type</div>
-                            <div class="col-6 col-sm-5">Description</div>
-                            <div class="col-1">Amount</div>
+                            <div class="col-6 col-sm-5">Descriptions</div>
+                            <div class="d-none d-sm-block col-4">Pièces</div>
+                            <div class="col-1 col-sm-2">Prix</div>
+                            <div class="col-1 col-sm-1">Main d'oeuvre</div>
                         </div>
 
                         <div class="text-95 text-secondary-d3" *ngFor="let item of list">
                             <div class="row mb-2 mb-sm-0 py-25">
-                                <div class="d-none d-sm-block col-5">{{ item.type }}</div>
                                 <div class="col-6 col-sm-5">{{ item.description }}</div>
-                                <div class="col-1 text-secondary-d2">${{ item.cout }}</div>
+                                <div class="d-none d-sm-block col-4">{{ item.Piece.piece_name }}</div>
+                                <div class="col-1 col-sm-2 text-secondary-d2">${{ item.Piece.prix }}</div>
+                                <div class="col-1 col-sm-1 text-secondary-d2">${{ item.Piece.main_oeuvre }}</div>
                             </div>
 
                         </div>
@@ -104,20 +106,20 @@
 
                             <div class="col-12 col-sm-5 text-grey text-90 order-first order-sm-last">
                                 <div class="row my-2">
-                                    <div class="col-7 text-right">
+                                    <div class="col-9 text-right">
                                         SubTotal
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-3">
                                         <span class="text-120 text-secondary-d1">${{ total }}</span>
                                     </div>
                                 </div>
 
 
                                 <div class="row my-2 align-items-center bgc-primary-l3 p-2">
-                                    <div class="col-7 text-right">
+                                    <div class="col-9 text-right">
                                         Total Amount
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-3">
                                         <span class="text-150 text-success-d3 opacity-2">${{ total }}</span>
                                     </div>
                                 </div>
