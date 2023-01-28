@@ -72,7 +72,9 @@
 <div class="row">
   <app-card cardTitle="Réception des voitures">
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="filterTerm"/>
+      <div class="col-md-5">
+        <input type="text" class="form-control" placeholder="rechercher" [(ngModel)]="filterTerm"/>
+      </div>
     </div>
     <table   class="table">
       <thead>

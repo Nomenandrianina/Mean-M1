@@ -61,7 +61,7 @@ export default class BonEntreComponent {
     const onSuccess = (response: any) => {
       if (response.status === 200){
         this.loading = false;
-        this.message = true;
+        this.show_message_success();
         this.imageSrc = '../../../../assets/images/add-icon.svg';
         this.form.reset();
       }else{
@@ -83,6 +83,14 @@ export default class BonEntreComponent {
     };
     this.bonService.create(data).subscribe(onSuccess,onError);
   }
+
+  show_message_success(){
+    this.message=true;
+    setTimeout(()=>{
+      this.message = false;
+    }, 4000);
+  }
+
   removeMessage(){
     this.message = false;
   }

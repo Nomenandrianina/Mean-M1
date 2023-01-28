@@ -33,6 +33,8 @@ import { ConfigurationComponent } from './theme/layout/admin/configuration/confi
 import { GuestComponent } from './theme/layout/guest/guest.component';
 import { NavigationAtelierItem } from './theme/layout/admin/navigation/navigationAtelier';
 import { BonsortieComponent } from './demo/atelier/bonsortie/bonsortie.component';
+// import { ListePaiementComponent } from './demo/financier/liste-paiement/liste-paiement.component';
+// import { StatistiqueComponent } from './demo/financier/statistique/statistique.component';
 // import { HomeComponent } from './demo/financier/home/home.component';
 // import { ListePieceComponent } from './demo/financier/liste-piece/liste-piece.component';
 // import { AddPieceComponent } from './demo/financier/add-piece/add-piece.component';
@@ -59,6 +61,8 @@ import { BonsortieComponent } from './demo/atelier/bonsortie/bonsortie.component
     ConfigurationComponent,
     GuestComponent,
     BonsortieComponent,
+    // ListePaiementComponent,
+    // StatistiqueComponent,
     // HomeComponent,
     // ListePieceComponent,
     // AddPieceComponent

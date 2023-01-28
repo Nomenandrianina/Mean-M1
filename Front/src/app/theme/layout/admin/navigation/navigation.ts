@@ -57,11 +57,19 @@ const NavigationItems = [
         icon: 'ti ti-vocabulary'
       },
       {
-        id: 'historique',
-        title: 'Historique',
+        id: 'paiement',
+        title: 'Paiement',
         type: 'item',
         classes: 'nav-item',
-        url: '/client/historique',
+        url: '/financier/paiement',
+        icon: 'ti ti-vocabulary'
+      },
+      {
+        id: 'paiement',
+        title: 'Statitique',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/financier/statistique',
         icon: 'ti ti-vocabulary'
       }
     ]

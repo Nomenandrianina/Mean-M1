@@ -100,6 +100,14 @@ const routes: Routes = [
       {
         path: 'financier/nouveau_piece',
         loadComponent: () => import('./demo/financier/add-piece/add-piece.component')
+      },
+      {
+        path: 'financier/paiement',
+        loadComponent: () => import('./demo/financier/liste-paiement/liste-paiement.component')
+      },
+      {
+        path: 'financier/statistique',
+        loadComponent: () => import('./demo/financier/statistique/statistique.component')
       }
     ]
   },
