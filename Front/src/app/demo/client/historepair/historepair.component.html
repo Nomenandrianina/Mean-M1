@@ -22,12 +22,15 @@
             {{ item.Car.marque +' '+ item.Car.type}}
           </div>
           <div class="card-body">
-            <h5 class="card-title">{{ item.type }}</h5>
+            <h5 class="card-title">{{ item.Piece.piece_name }}</h5>
             <p class="card-text">{{ item.description }}</p>
-            <a class="btn btn-outline-secondary">${{ item.cout }}</a>
+            <a class="btn btn-outline-secondary">${{ item.Piece.prix +item.Piece.main_oeuvre }}</a>
           </div>
-          <div class="card-footer text-muted">
+          <div class="card-footer text-muted" *ngIf="item.date_fin">
             En réparation il y a {{ calculateDiff(item.date_debut) }}  | Achevé il y a {{ calculateDiff(item.date_fin) }}
+          </div>
+          <div class="card-footer text-muted" *ngIf="!item.date_fin">
+            En réparation il y a {{ calculateDiff(item.date_debut) }}
           </div>
         </div>
       </div>
