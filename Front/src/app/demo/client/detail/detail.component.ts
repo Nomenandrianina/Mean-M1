@@ -52,6 +52,7 @@ export default class DetailComponent {
     const onSuccess = (response: any) => {
       this.loading = false;
       this.list = response.reparation;
+      console.log(this.list);
     };
     const onError = (response: any) => {
       this.loading = false;
@@ -61,21 +62,4 @@ export default class DetailComponent {
 
   }
 
-  onsubmit(){
-    this.loading = true;
-    const data = {
-      id: this.form.value.id_rep,
-      avancement: this.form.value.avancement
-    }
-    const onSuccess = (response: any) => {
-      this.loading = false;
-      this.router.navigateByUrl('/atelier/update/reparation');
-    };
-    const onError = (response: any) => {
-      this.loading = false;
-      this.message = response.message;
-    };
-    this.receptionService.updateReparation(data).subscribe(onSuccess,onError);
-
-  }
 }

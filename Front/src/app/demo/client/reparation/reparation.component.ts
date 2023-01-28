@@ -48,7 +48,6 @@ export default class ReparationComponent implements OnInit {
     const onSuccess = (response: any) => {
       this.loading = false;
       this.list = response.reparation;
-      console.log(this.list);
     };
     const onError = (response: any) => {
       this.message = response.message;

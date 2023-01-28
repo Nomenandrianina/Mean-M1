@@ -14,9 +14,8 @@
           <th>Images</th>
           <th>Marques</th>
           <th>Types</th>
-          <th>A réparer</th>
-          <th>Description</th>
-          <th>Coût</th>
+          <th>Descriptions</th>
+          <th>Pièces</th>
           <th>Avancement</th>
           <th>Actions</th>
         </tr>
@@ -26,9 +25,8 @@
           <td><img src="{{ car.Car.image }}" alt="" style="width: 100px;border-radius: 5px;"></td>
           <td>{{ car.Car.marque }}</td>
           <td>{{ car.Car.type }}</td>
-          <td>{{ car.type }}</td>
           <td>{{ car.description }}</td>
-          <td>{{ car.cout }} $</td>
+          <td>{{ car.Piece.piece_name }}</td>
           <td>
             <div>
               <progress-bar  progress="{{ car.avancement }}" [color]="'#488aff'">
