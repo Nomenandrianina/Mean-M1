@@ -7,7 +7,7 @@ const router = Router();
 router.post("/financier/add_piece", async (req, res) =>{
     try {
         const piece = await Piece.create({
-            photo: "photo.png",
+            photo: req.body.photo,
             piece_name: req.body.piece_name,
             prix: req.body.prix,
             main_oeuvre: req.body.main_oeuvre

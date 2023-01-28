@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FinancerService } from 'src/app/services/financer.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { RouterModule } from '@angular/router';
+import { RouterModule,Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { FormGroup,  FormControl , FormArray , FormBuilder} from '@angular/forms';
@@ -17,7 +17,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
   selector: 'app-liste-piece',
   standalone: true,
   imports: [CommonModule, SharedModule, RouterModule, ReactiveFormsModule,NgxLoadingModule,Ng2SearchPipeModule],
-
+  
   templateUrl: './liste-piece.component.html',
   styleUrls: ['./liste-piece.component.scss']
 })
@@ -26,7 +26,7 @@ export default class ListePieceComponent implements OnInit{
   public loading = false;
   filterTerm: string;
   main_oeuvre:"main d'oeuvre"
-  constructor(private financierservice: FinancerService){
+  constructor(private financierservice: FinancerService,private router: Router){
     // this.financierservice.Check_Connected_financier();
   }
   ngOnInit(): void {
@@ -47,5 +47,8 @@ export default class ListePieceComponent implements OnInit{
     this.financierservice.getAllPiece().subscribe(onSuccess,onError);
   }
 
+  Add_new_piece():void{
+    this.router.navigate(['/financier/nouveau_piece']);
+  }
   
 }

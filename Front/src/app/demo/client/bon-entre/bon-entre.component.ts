@@ -42,49 +42,48 @@ export default class BonEntreComponent {
   get moteur(){return this.form.get('moteur'); }
   get immatricule(){return this.form.get('immatricule'); }
 
-onChange(event){
-  const reader = new FileReader();
+  onChange(event){
+    const reader = new FileReader();
+    const [file] = event.target.files;
+    reader.readAsDataURL(file);
+    reader.onload = () => {
 
-  const [file] = event.target.files;
-  reader.readAsDataURL(file);
-  reader.onload = () => {
+      this.imageSrc = reader.result as string;
 
-    this.imageSrc = reader.result as string;
+      this.form.patchValue({
+        image: reader.result
+      });
+    };
+  }
 
-    this.form.patchValue({
-      image: reader.result
-    });
-  };
-}
-
-onSubmit(){
-  this.loading = true;
-  const onSuccess = (response: any) => {
-    if (response.status === 200){
+  onSubmit(){
+    this.loading = true;
+    const onSuccess = (response: any) => {
+      if (response.status === 200){
+        this.loading = false;
+        this.message = true;
+        this.imageSrc = '../../../../assets/images/add-icon.svg';
+        this.form.reset();
+      }else{
+        this.loading = false;
+        this.form.reset();
+      }
+    };
+    const onError = (response: any) => {
       this.loading = false;
-      this.message = true;
-      this.imageSrc = '../../../../assets/images/add-icon.svg';
       this.form.reset();
-    }else{
-      this.loading = false;
-      this.form.reset();
-    }
-  };
-  const onError = (response: any) => {
-    this.loading = false;
-    this.form.reset();
-  };
-  const data = {
-    image: this.form.value.image,
-    marque: this.form.value.marque,
-    type: this.form.value.type,
-    moteur: this.form.value.moteur,
-    immatricule: this.form.value.immatricule,
-    User: sessionStorage.getItem('id')
-  };
-  this.bonService.create(data).subscribe(onSuccess,onError);
-}
-removeMessage(){
-  this.message = false;
-}
+    };
+    const data = {
+      image: this.form.value.image,
+      marque: this.form.value.marque,
+      type: this.form.value.type,
+      moteur: this.form.value.moteur,
+      immatricule: this.form.value.immatricule,
+      User: sessionStorage.getItem('id')
+    };
+    this.bonService.create(data).subscribe(onSuccess,onError);
+  }
+  removeMessage(){
+    this.message = false;
+  }
 }

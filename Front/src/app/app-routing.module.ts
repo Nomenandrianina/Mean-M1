@@ -96,6 +96,10 @@ const routes: Routes = [
       {
         path: 'home/financier/pieces',
         loadComponent: () => import('./demo/financier/liste-piece/liste-piece.component')
+      },
+      {
+        path: 'financier/nouveau_piece',
+        loadComponent: () => import('./demo/financier/add-piece/add-piece.component')
       }
     ]
   },

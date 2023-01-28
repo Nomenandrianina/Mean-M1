@@ -1,1 +1,40 @@
-<p>add-piece works!</p>
+<div class="row">
+  <form  [formGroup]="form"  (ngSubmit)="onSubmit()"  method="POST">
+      <app-card cardTitle="* Champs requis">
+        <div class="col-sm-6">
+          <input type="file" id="file" (change)="onChange($event)" style="display:none">
+          <label for="file">
+            <img  [src]="imageSrc" style="width: 50 px;height: 50px;"  alt="image">
+            <div *ngIf="photo_required">
+                Veuiller ajouter la photo
+            </div>
+          </label>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Désignation *</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="piece_name" aria-describedby="emailHelp" placeholder="disque embrayage">
+            <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">prix *</label>
+            <input type="number" class="form-control" id="exampleInputEmail1" formControlName="prix" aria-describedby="emailHelp" placeholder="prix">
+            <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Prix main oeuvre: *</label>
+            <input type="email" class="form-control" formControlName="main_oeuvre" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="20000">
+            <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+          <div class="d-grid mt-4">
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-secondary">Valider</button>
+            </div>
+          </div>
+        </div>
+      </app-card>
+  </form>
+  <!-- <app-card cardTitle="Réception des voitures">
+    
+  </app-card> -->
+</div>
