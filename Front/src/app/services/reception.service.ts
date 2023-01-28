@@ -21,7 +21,7 @@ const urlUpdatereparation = baseUrl + 'update/avancement';
 
 const urlTerminerReparation = baseUrl + 'terminer/reparation';
 
-const urlGetCarByUser = baseUrl + 'client/car/reparation';
+const urlGetReparationByIdCar = baseUrl + 'client/car/reparation';
 
 const urlGetRepHistorique = baseUrl + 'client/historique';
 
@@ -33,7 +33,7 @@ const paiement = baseUrl + 'client/paiement';
 
 const getAllpaiement = baseUrl + 'client/list/paiement';
 
-const getAllPiece = baseUrl + 'financier/get_piece';
+const urlGetAllpiece = baseUrl + 'financier/get_piece';
 
 
 
@@ -76,10 +76,9 @@ export class ReceptionService {
     return this.http.post(urlTerminerReparation,data);
   }
 
-  getCarByUser(data){
-    return this.http.post(urlGetCarByUser,data);
+  getReparationbyIdCar(data){
+    return this.http.post(urlGetReparationByIdCar,data);
   }
-
   getHistoriqueBycar(data){
     return this.http.post(urlGetRepHistorique,data);
   }
@@ -101,6 +100,6 @@ export class ReceptionService {
   }
 
   getAllpiece(){
-    return this.http.get(getAllPiece);
+    return this.http.get(urlGetAllpiece);
   }
 }

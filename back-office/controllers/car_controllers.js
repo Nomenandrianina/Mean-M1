@@ -57,13 +57,9 @@ router.post("/create_car", async (req, res) => {
 
   router.post("/client/car/reparation", async (req, res) =>{
     try {
-      const car = await Car.find({User: req.body.user});
-      var reparation;
-      for(var i =0;i<car.length;i++) {
-        reparation = await Reparation.find({Car: car[i]._id}).populate(["Car","Piece"]);
-      };
+      const reparation = await Reparation.find({Car: req.body.id}).populate(["Car","Piece"]);
       console.log("Client reparation:",reparation);
-      res.status(200).json({ status:200,reparation,car });
+      res.status(200).json({ status:200,reparation });
     } catch (error) {
       res.status(400).json({ error });
     }
@@ -73,8 +69,7 @@ router.post("/create_car", async (req, res) => {
     try {
       
       const car = await Car.findById(req.body.id);
-      console.log(car);
-      const reparation = await Reparation.find({Car: car._id}).populate("Car");
+      const reparation = await Reparation.find({Car: car._id}).populate(["Car","Piece"]);
       res.status(200).json({ status:200,reparation,car });
     } catch (error) {
       res.status(400).json({ error });

@@ -51,10 +51,10 @@ export default class FactureComponent implements OnInit {
   get status(){return this.form.get('status'); }
 
   ngOnInit(): void {
-    this.getCarUser();
+    this.getFactureCarUser();
   }
 
-  getCarUser(): void{
+  getFactureCarUser(): void{
     this.loading = true;
     const data = {
       id: this.id

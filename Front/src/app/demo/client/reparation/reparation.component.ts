@@ -36,10 +36,10 @@ export default class ReparationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCarUser();
+    this.getReparationByIdCar();
   }
 
-  getCarUser(): void{
+  getReparationByIdCar(): void{
     this.loading = true;
     const data = {
       user: sessionStorage.getItem('id'),
@@ -53,6 +53,6 @@ export default class ReparationComponent implements OnInit {
       this.message = response.message;
       this.loading = false;
     };
-    this.receptionService.getCarByUser(data).subscribe(onSuccess,onError);
+    this.receptionService.getReparationbyIdCar(data).subscribe(onSuccess,onError);
   }
 }

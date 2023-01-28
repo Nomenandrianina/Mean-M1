@@ -53,7 +53,7 @@ export default class HistorepairComponent {
       this.message = response.message;
       this.loading = false;
     };
-    this.receptionService.getCarByUser(data).subscribe(onSuccess,onError);
+    this.receptionService.getReparationbyIdCar(data).subscribe(onSuccess,onError);
   }
 
   calculateDiff(sentDate) {
