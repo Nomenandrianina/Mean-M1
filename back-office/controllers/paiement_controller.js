@@ -4,7 +4,9 @@ const Reparation = require("../models/reparation");
 const Paiement = require("../models/paiement");
 const Car = require("../models/car"); 
 const User = require("../models/user");
+const Piece = require("../models/piece");
 const db = require("../db/connection");
+const { populate } = require("../models/reparation");
 
 
 const router = Router();
@@ -26,10 +28,16 @@ router.post("/client/paiement", async (req, res) => {
   });
 
 
-  router.get("/client/list/paiement", async (req, res) => {
+  router.post("/client/list/paiement", async (req, res) => {
     try {
-        const paie = await Paiement.find().populate(["User","Car","Reparation"]);
-        res.status(200).json({status:200,paie});
+        const paie = await Paiement.find({User: req.body.id}).populate(["User","Car"]);
+        var reparation = [];
+        for(var i=0;i<paie.length;i++){
+          for(var j=0; j<paie[i].Reparation.length;j++){
+            reparation.push(await Reparation.findById(paie[i].Reparation[j]).populate(["Piece","Car"]));
+          }
+        }
+        res.status(200).json({status:200,paie,reparation});
     } catch (error) {
       res.status(400).json({ error });
     }
