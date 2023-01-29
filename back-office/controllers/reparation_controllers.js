@@ -4,7 +4,6 @@ const Reparation = require("../models/reparation");
 const Car = require("../models/car"); 
 const db = require("../db/connection");
 
-
 const router = Router();
 
 router.post("/add_reparation", async (req, res) => {
@@ -12,6 +11,7 @@ router.post("/add_reparation", async (req, res) => {
         const reparation = [];
         const body = req.body.reparation;
         const datenow = Date.now();
+        
         console.log("Reparation: ",body);
             for(var i=0;i<body.length;i++){
                 data = 
@@ -70,6 +70,64 @@ router.post("/add_reparation", async (req, res) => {
       const reparation = await Reparation.findByIdAndUpdate(req.body.id,  { $set:{status: 'Terminer', date_fin: Date.now()} });
       res.status(200).json({ status:200,reparation });
     } catch (error) {
+      res.status(400).json({ error });
+    }
+  });
+
+
+  router.get("/financier/statistique_hebdomadaire", async (req, res) =>{
+    try {
+
+      // var startOfWeek = moment().startOf('week').toDate();
+      // var endOfWeek   = moment().endOf('week').toDate();
+
+      // var dateArray = [];
+      // var currentDate = moment(startOfWeek);
+      // var stopDate = moment(endOfWeek);
+      // while (currentDate <= stopDate) {
+      //     dateArray.push( moment(currentDate).format('YYYY-MM-DD') )
+      //     currentDate = moment(currentDate).add(1, 'days');
+      // }
+      Array.from(Array(7).keys()).map((idx) => {
+        const d = new Date(); d.setDate(d.getDate() - d.getDay() + idx);
+        console.log(d);
+      return d;
+     });
+     
+
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ error });
+    }
+  });
+
+
+  router.get("/financier/moyenne_reparation", async (req, res) =>{
+    try {
+      
+      var response_final = [];
+      const reparation = await Reparation.find({'avancement':100});
+      var reponses=[];
+      var reponse_length=[];
+
+      reparation.forEach(element => {
+        var date1 = new Date("2023-01-29");
+        var date2 = new Date("2023-01-30");
+        var dateDiff = date2.getTime() - date1.getTime();  
+        reponses.push({id:element._id,dateDiff: dateDiff,car:element.Car});
+        reponse_length.push({id:element._id,dateDiff: dateDiff,car:element.Car});
+      });
+
+      const nombre_voiture =[...new Map(reponse_length.map(item => [item['car'], item])).values()];
+      const somme_test=reponses.reduce((n, {dateDiff}) => n + dateDiff, 0);
+      const somme_moyenne=somme_test/nombre_voiture.length;
+      const final_moyenne=Math.floor(somme_moyenne/1000/60/60/24);
+      console.log(final_moyenne);
+
+      res.status(200).json({ status:200,final_moyenne});
+
+    } catch (error) {
+      console.log(error);
       res.status(400).json({ error });
     }
   });

@@ -7,6 +7,7 @@ const baseUrl = 'http://localhost:4000/';
 const urlAddPiece = baseUrl + 'financier/add_piece';
 const urlGetAllPiece = baseUrl + 'financier/get_piece';
 const urlDeletePiece = baseUrl + 'financier/delete_piece';
+const urlmoyenne = baseUrl + 'financier/moyenne_reparation';
 
 
 @Injectable({
@@ -29,6 +30,10 @@ export class FinancerService {
 
   getAllPiece(){
     return this.http.get(urlGetAllPiece);
+  }
+
+  getMoyennetemps(){
+    return this.http.get(urlmoyenne);
   }
 
 }

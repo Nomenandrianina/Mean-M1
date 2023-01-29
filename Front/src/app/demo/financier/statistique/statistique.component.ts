@@ -11,6 +11,7 @@ import {ApexAxisChartSeries,ApexChart,ChartComponent,ApexDataLabels,ApexPlotOpti
   ApexStroke,
   ApexTooltip
 } from 'ng-apexcharts';
+import { FinancerService } from 'src/app/services/financer.service';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -154,15 +155,28 @@ export default class StatistiqueComponent {
 
     }
   }
+  moyenne:any;
 
-
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,private financierservice:FinancerService) {
     // this.authService.isConnected();
   
   }
 
+  get_Moyenne_temps():void{
+    const onSuccess = (response: any) => {
+      this.moyenne=response.final_moyenne;
+      console.log(this.moyenne);
+    };
+
+    const onError = (response: any) => {
+    };
+
+    this.financierservice.getMoyennetemps().subscribe(onSuccess,onError);
+  }
+
   ngOnInit(): void {
     this.selected();
+    this.get_Moyenne_temps();
     // setTimeout(() => {
     //   this.monthChart = new ApexCharts(document.querySelector('#tab-chart-1'), this.monthOptions);
     //   this.monthChart.render();

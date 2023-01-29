@@ -42,7 +42,8 @@ const HTML_TEMPLATE = (text) => {
                 <h1>EMAIL HEADER</h1>
               </div>
               <div class="email-body">
-                <p>${text}</p>
+                <p>Bonjour Mr/Mme</p>
+                <p>Votre inscription sur notre plateforme a été bien réussie.</p>
               </div>
               <div class="email-footer">
                 <p>EMAIL FOOTER</p>

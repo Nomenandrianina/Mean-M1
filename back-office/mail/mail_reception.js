@@ -39,9 +39,6 @@ const HTML_TEMPLATE = (matricule,marque,type) => {
         <body>
           <div class="container">
             <div class="email">
-            //   <div class="email-header">
-            //     <h1>EMAIL HEADER</h1>
-            //   </div>
               <div class="email-body">
                 <p>Bonjour Mr/Mme</p>
                 <p>On est heureux dans l'équipe de GasyReparator de pouvoir contribué à la réparation de votre voiture.</p>
