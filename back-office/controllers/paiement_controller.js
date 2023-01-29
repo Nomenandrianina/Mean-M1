@@ -43,6 +43,23 @@ router.post("/client/paiement", async (req, res) => {
     }
   });
 
+  router.get("/financier/list/paiement", async (req, res) => {
+    try {
+        const paie = await Paiement.find().populate(["User","Car"]);
+        var reparation = [];
+        for(var i=0;i<paie.length;i++){
+          for(var j=0; j<paie[i].Reparation.length;j++){
+            reparation.push(await Reparation.findById(paie[i].Reparation[j]).populate(["Piece","Car"]));
+          }
+        }
+        res.status(200).json({status:200,paie,reparation});
+    } catch (error) {
+      res.status(400).json({ error });
+    }
+  });
+
+
+
 
 
   module.exports = router;

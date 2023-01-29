@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-const ConnectionString = process.env.MONGO_URI;
+const ConnectionString = 'mongodb+srv://antonio:rQR8nNThtTJBm41Z@toni0.jb53acl.mongodb.net/Mean';
 mongoose.set('strictQuery', true);
 mongoose.set('setDefaultsOnInsert', true);
 mongoose.connect(ConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
