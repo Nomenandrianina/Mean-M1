@@ -81,16 +81,18 @@
 
                     <div class="mt-4">
                         <div class="row text-600 text-white bgc-default-tp1 py-25">
-                            <div class="col-6 col-sm-5">Descriptions</div>
-                            <div class="d-none d-sm-block col-4">Pièces</div>
+                            <div class="col-6 col-sm-3">Descriptions</div>
+                            <div class="d-none d-sm-block col-3">Pièces</div>
+                            <div class="d-none d-sm-block col-3">Quantités</div>
                             <div class="col-1 col-sm-2">Prix</div>
                             <div class="col-1 col-sm-1">Main d'oeuvre</div>
                         </div>
 
                         <div class="text-95 text-secondary-d3" *ngFor="let item of list">
                             <div class="row mb-2 mb-sm-0 py-25">
-                                <div class="col-6 col-sm-5">{{ item.description }}</div>
-                                <div class="d-none d-sm-block col-4">{{ item.Piece.piece_name }}</div>
+                                <div class="col-6 col-sm-3">{{ item.description }}</div>
+                                <div class="d-none d-sm-block col-3">{{ item.Piece.piece_name }}</div>
+                                <div class="d-none d-sm-block col-3">{{ item.quantite }}</div>
                                 <div class="col-1 col-sm-2 text-secondary-d2">${{ item.Piece.prix }}</div>
                                 <div class="col-1 col-sm-1 text-secondary-d2">${{ item.Piece.main_oeuvre }}</div>
                             </div>

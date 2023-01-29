@@ -7,11 +7,12 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { moveItemInArray, CdkDragDrop } from "@angular/cdk/drag-drop";
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RouterModule } from '@angular/router';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @Component({
   selector: 'app-historique',
   standalone: true,
-  imports: [CommonModule, SharedModule, DragDropModule, Ng2SearchPipeModule,RouterModule],
+  imports: [CommonModule, SharedModule, DragDropModule, Ng2SearchPipeModule,RouterModule,NgxLoadingModule],
   templateUrl: './historique.component.html',
   styleUrls: ['./historique.component.scss']
 })

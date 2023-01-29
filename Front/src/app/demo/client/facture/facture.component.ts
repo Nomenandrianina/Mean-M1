@@ -68,7 +68,7 @@ export default class FactureComponent implements OnInit {
         this.id_reparation.push(element._id);
       });
       this.total = this.list.reduce((accumulator, obj) => {
-        return accumulator + obj.Piece.prix + obj.Piece.main_oeuvre;
+        return accumulator + (obj.Piece.prix* obj.quantite) + obj.Piece.main_oeuvre;
       }, 0);
     };
     const onError = (response: any) => {
