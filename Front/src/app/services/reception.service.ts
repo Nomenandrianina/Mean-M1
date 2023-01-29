@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 
 
 const baseUrl = 'http://localhost:4000/';
+// const baseUrl = 'https://expressjs.cyclic.app/';
+
 
 const urlgetCar = baseUrl + 'all_car';
 
@@ -37,6 +39,8 @@ const urlgetAllpaiement = baseUrl + 'client/list/paiement';
 const urlgetPaiementFinancier = baseUrl + 'financier/list/paiement';
 
 const urlGetAllpiece = baseUrl + 'financier/get_piece';
+
+const urlValidePaie = baseUrl + 'financier/valide/paiement';
 
 
 
@@ -108,5 +112,9 @@ export class ReceptionService {
 
   getAllpiece(){
     return this.http.get(urlGetAllpiece);
+  }
+
+  ValidePaiement(data){
+    return this.http.post(urlValidePaie,data);
   }
 }

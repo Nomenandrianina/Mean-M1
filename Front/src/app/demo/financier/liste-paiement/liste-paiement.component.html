@@ -1,3 +1,8 @@
+<div *ngIf="message" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Validation du paiement réussie!</strong>
+  <button type="button" (click)="removeMessage" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
 <div class="row">
   <app-card cardTitle="Listes des paiements">
     <div class="form-group">
@@ -31,9 +36,10 @@
             ${{ (car.Piece.prix*car.quantite) + car.Piece.main_oeuvre }}
           </td>
           <td>
-            <button class="btn btn-secondary">
+            <button class="btn btn-secondary" (click)="onclick(car.Car._id,car._id)" *ngIf="car.Car.etat == '1'">
               Valider
             </button>
+            <span class="badge text-bg-success" *ngIf="car.Car.etat == '2'">Payement validé et réussie</span>
           </td>
         </tr>
       </tbody>

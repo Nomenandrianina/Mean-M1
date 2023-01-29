@@ -117,11 +117,21 @@
           </div>
         </div>
 
-        <div class="row" *ngIf="list.status == 'Terminer'">
+        <div class="row" *ngIf="list.status == 'Terminer' && list.Car.etat == '1'">
           <div class="col-md-12">
             <div class="card">
               <div class="alert alert-success" role="alert" >
                 Réparation terminée, vérifiez votre facture pour règlement!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="list.status == 'Terminer' && list.Car.etat == '2'">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="alert alert-success" role="alert" >
+                Payement effectué!
               </div>
             </div>
           </div>

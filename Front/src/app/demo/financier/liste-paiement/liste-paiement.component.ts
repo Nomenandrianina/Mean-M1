@@ -21,7 +21,7 @@ export default class ListePaiementComponent {
   detail: any;
   rep: any;
   public loading = false;
-  message: any;
+  message:boolean = false;
   filterTerm!: string;
   id_user = sessionStorage.getItem('id');
 
@@ -69,5 +69,35 @@ export default class ListePaiementComponent {
     }
 
     return ret;
-}
+  }
+
+  onclick(idcar,idrep){
+    this.loading = true;
+    const data = {
+      idcar: idcar,
+      idrep: idrep,
+    };
+    const onSuccess = (response: any) => {
+      if(response.status == 200){
+        this.loading = false;
+        this.show_message_success();
+      }
+    };
+    const onError = (response: any) => {
+      this.loading = false;
+    };
+    this.receptionService.ValidePaiement(data).subscribe(onSuccess,onError);
+  }
+
+  show_message_success(){
+    this.message=true;
+    setTimeout(()=>{
+      this.message = false;
+    }, 4000);
+    window.location.reload();
+  }
+
+  removeMessage(){
+    this.message = false;
+  }
 }

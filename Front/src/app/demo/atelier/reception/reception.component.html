@@ -37,6 +37,9 @@
           <td *ngIf="car.etat == '1'">
             <span class="badge text-bg-success">Reçu par le responsable</span>
           </td>
+          <td *ngIf="car.etat == '2'">
+            <span class="badge text-bg-success">Réparé et payé</span>
+          </td>
         </tr>
       </tbody>
     </table>

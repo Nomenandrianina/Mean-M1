@@ -58,6 +58,17 @@ router.post("/client/paiement", async (req, res) => {
     }
   });
 
+  router.post("/financier/valide/paiement", async (req, res) => {
+    try {
+      const car = await Car.findByIdAndUpdate(req.body.idcar,  { $set:{etat: '2'} });
+      const paie = await Paiement.findOneAndUpdate({Car: req.body.idcar},{ $set: {etat: 'paid', status: 'Paiement validé'} });
+      console.log(paie);
+      res.status(200).json({status:200,paie,car});
+    } catch (error) {
+      res.status(400).json({ error });
+    }
+  });
+
 
 
 

@@ -30,7 +30,10 @@
           <td>
             ${{ (car.Piece.prix*car.quantite) + car.Piece.main_oeuvre }}
           </td>
-          <td><span class="badge text-bg-success">Payement envoyé et en attente de validation</span></td>
+          <td>
+            <span class="badge text-bg-success" *ngIf="car.Car.etat == '1'">Payement envoyé et en attente de validation</span>
+            <span class="badge text-bg-success" *ngIf="car.Car.etat == '2'">Payement validé et réussie</span>
+          </td>
         </tr>
       </tbody>
 
