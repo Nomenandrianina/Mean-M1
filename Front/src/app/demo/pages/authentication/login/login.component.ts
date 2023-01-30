@@ -20,11 +20,11 @@ export default class LoginComponent {
   message: any;
   public loading = false;
   loginForm = new FormGroup({
-    email:  new FormControl(null, [ Validators.required, Validators.email]),
-    mdp:  new FormControl(null, [ Validators.required]),
+    email:  new FormControl('nomenandrianinaantonio@gmail.com', [ Validators.required, Validators.email]),
+    mdp:  new FormControl('wyCP6AmJeg3T8vi', [ Validators.required]),
   });
 
-  constructor(private authService: AuthService,private router: Router) { 
+  constructor(private authService: AuthService,private router: Router) {
     this.authService.Check_Connected_atelier();
   }
 
