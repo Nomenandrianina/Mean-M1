@@ -70,9 +70,11 @@
 
                                 <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Type :</span> {{ detail.type }}</div>
 
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Immatricule:</span> {{ detail.immatriculation }}</div>
+                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Immatricule:</span>{{ detail.immatriculation }}</div>
 
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Status:</span> Unpaid</div>
+                                <div class="my-2" *ngIf="detail.etat == '1'"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Status:</span> Unpaid</div>
+
+                                <div class="my-2" *ngIf="detail.etat == '2'"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Status:</span> Paid</div>
 
                             </div>
                         </div>
@@ -130,15 +132,19 @@
 
                         <hr />
 
-                        <div *ngIf="checkStatus(list) == true">
+                        <div *ngIf="checkStatus(list) == true && detail.etat == '1'">
                           <form (ngSubmit)="paiement()" [formGroup]="form"  method="POST">
                             <button type="submit" class="btn btn-info btn-bold px-4 float-right mt-3 mt-lg-0">Payer maintenant</button>
                           </form>
                         </div>
 
 
-                      <div class="alert alert-danger" role="alert" *ngIf="checkStatus(list) == false">
+                      <div class="alert alert-danger" role="alert" *ngIf="checkStatus(list) == false && detail.etat == '1'">
                         Toutes les réparations pour cette voiture ne sont pas encore terminées!
+                      </div>
+
+                      <div class="alert alert-success" role="alert" *ngIf="detail.etat == '2'">
+                        Payement terminer!
                       </div>
 
                     </div>

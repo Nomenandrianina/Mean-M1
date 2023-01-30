@@ -63,6 +63,7 @@ export default class FactureComponent implements OnInit {
       this.loading = false;
       this.list = response.reparation;
       this.detail = response.car;
+      console.log(this.list);
       this.id_car = this.detail._id;
       this.list.forEach(element => {
         this.id_reparation.push(element._id);
@@ -82,8 +83,10 @@ export default class FactureComponent implements OnInit {
     var reponse = false;
     data.forEach(element => {
         if(element.status == 'Terminer'){
+          console.log(true);
           reponse = true;
         }else{
+          console.log(false);
           reponse = false;
         }
     });

@@ -29,7 +29,7 @@ router.post("/signup", async (req, res) => {
           // send email to the new users
           mail_user(req,res);
           // send new user as response
-          const token = await jwt.sign({ email: req.body.email }, secret);
+          const token = await jwt.sign({ email: req.body.email }, "meanmeanmean2023");
           console.log(token);
           res.status(200).json(token);
       }
@@ -49,7 +49,7 @@ router.post("/signup", async (req, res) => {
         console.log("ttt",result);
         if (result) {
           // sign token and send it in response
-          const token = await jwt.sign({ email: user.email }, secret);
+          const token = await jwt.sign({ email: user.email }, "meanmeanmean2023");
           res.status(200).json({ status:200,token,user });
         } else {
           res.status(400).json({ error: "Le mot de passe ne correspond pas!" });

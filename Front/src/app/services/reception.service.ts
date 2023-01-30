@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 
 
 
-const baseUrl = 'http://localhost:4000/';
-// const baseUrl = 'https://expressjs.cyclic.app/';
+// const baseUrl = 'http://localhost:4000/';
+const baseUrl = 'https://expressjs.cyclic.app/';
 
 
 const urlgetCar = baseUrl + 'all_car';
