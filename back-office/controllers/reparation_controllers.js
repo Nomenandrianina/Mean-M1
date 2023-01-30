@@ -73,7 +73,6 @@ router.post("/add_reparation", async (req, res) => {
     }
   });
 
-
   router.get("/financier/statistique_hebdomadaire", async (req, res) =>{
     try {
 
