@@ -32,24 +32,15 @@ const NavigationItems = [
     icon: 'icon-navigation',
     children: [
       {
-        id: 'default',
-        title: 'Acceuil',
+        id: 'etat de paiement',
+        title: 'Accueil',
         type: 'item',
         classes: 'nav-item',
-        url: '/default',
-        icon: 'ti ti-dashboard',
-        breadcrumbs: false
-      }
-    ]
-  },
-  {
-    id: 'other',
-    title: 'Objets',
-    type: 'group',
-    icon: 'icon-navigation',
-    children: [
+        url: '/home/financier',
+        icon: 'ti ti-vocabulary'
+      },
       {
-        id: 'etat de paiement',
+        id: 'pices',
         title: 'Pièces',
         type: 'item',
         classes: 'nav-item',
@@ -63,74 +54,38 @@ const NavigationItems = [
         classes: 'nav-item',
         url: '/financier/paiement',
         icon: 'ti ti-vocabulary'
-      },
-      {
-        id: 'paiement',
-        title: 'Statitique',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/financier/statistique',
-        icon: 'ti ti-vocabulary'
       }
     ]
-  }
-  // {
-  //   id: 'elements',
-  //   title: 'Elements',
-  //   type: 'group',
-  //   icon: 'icon-navigation',
-  //   children: [
-  //     {
-  //       id: 'typography',
-  //       title: 'Typography',
-  //       type: 'item',
-  //       classes: 'nav-item',
-  //       url: '/typography',
-  //       icon: 'ti ti-typography'
-  //     },
-  //     {
-  //       id: 'color',
-  //       title: 'Colors',
-  //       type: 'item',
-  //       classes: 'nav-item',
-  //       url: '/color',
-  //       icon: 'ti ti-brush'
-  //     },
-  //     {
-  //       id: 'tabler',
-  //       title: 'Tabler',
-  //       type: 'item',
-  //       classes: 'nav-item',
-  //       url: 'https://tabler-icons.io/',
-  //       icon: 'ti ti-plant-2',
-  //       target: true,
-  //       external: true
-  //     }
-  //   ]
-  // },
+  },
   // {
   //   id: 'other',
-  //   title: 'Other',
+  //   title: 'Objets',
   //   type: 'group',
   //   icon: 'icon-navigation',
   //   children: [
   //     {
-  //       id: 'sample-page',
-  //       title: 'Sample Page',
+  //       id: 'etat de paiement',
+  //       title: 'Pièces',
   //       type: 'item',
-  //       url: '/sample-page',
   //       classes: 'nav-item',
-  //       icon: 'ti ti-brand-chrome'
+  //       url: '/home/financier/pieces',
+  //       icon: 'ti ti-vocabulary'
   //     },
   //     {
-  //       id: 'document',
-  //       title: 'Document',
+  //       id: 'paiement',
+  //       title: 'Paiement',
   //       type: 'item',
   //       classes: 'nav-item',
-  //       url: 'https://codedthemes.gitbook.io/berry-angular/',
-  //       icon: 'ti ti-vocabulary',
-  //       target: true,
-  //       external: true
+  //       url: '/financier/paiement',
+  //       icon: 'ti ti-vocabulary'
+  //     },
+  //     {
+  //       id: 'paiement',
+  //       title: 'Statitique',
+  //       type: 'item',
+  //       classes: 'nav-item',
+  //       url: '/financier/statistique',
+  //       icon: 'ti ti-vocabulary'
   //     }
   //   ]
   // }

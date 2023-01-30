@@ -35,6 +35,7 @@ const paiement = baseUrl + 'client/paiement';
 
 const urlgetAllpaiement = baseUrl + 'client/list/paiement';
 
+const urlbonsortie = baseUrl + 'client/bon-sortie';
 
 const urlgetPaiementFinancier = baseUrl + 'financier/list/paiement';
 
@@ -92,6 +93,10 @@ export class ReceptionService {
 
   getFactureBycar(data){
     return this.http.post(urlGetfacture,data);
+  }
+
+  getbonSortie(data){
+    return this.http.post(urlbonsortie,data);
   }
 
   get_All_Car_User(data){

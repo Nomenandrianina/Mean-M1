@@ -8,13 +8,19 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./nav-right.component.scss']
 })
 export class NavRightComponent implements OnInit {
+  public loading = false;
 
   constructor(  private authService: AuthService){}
   ngOnInit(): void {
   }
 
   Deconnexion(){
+    this.loading = true;
     this.authService.logout();
+    setTimeout(()=>{
+      this.loading=false ;                          
+      this.authService.logout();
+    }, 4000); 
   }
   
 }

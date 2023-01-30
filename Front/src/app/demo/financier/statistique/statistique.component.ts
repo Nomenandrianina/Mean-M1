@@ -167,7 +167,7 @@ export default class StatistiqueComponent {
       this.moyenne=response.final_moyenne;
       console.log(this.moyenne);
     };
-
+    
     const onError = (response: any) => {
     };
 

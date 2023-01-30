@@ -66,10 +66,6 @@ const routes: Routes = [
         loadComponent: () => import('./demo/client/facture/facture.component')
       },
       {
-        path: 'atelier/bon_sortie',
-        loadComponent: () => import('./demo/atelier/bon-sortie/bon-sortie.component')
-      },
-      {
         path: 'atelier/reception',
         loadComponent: () => import('./demo/atelier/reception/reception.component')
       },
@@ -90,8 +86,12 @@ const routes: Routes = [
         loadComponent: () => import('./demo/atelier/home/home.component')
       },
       {
+        path: 'atelier/bon_de_sortie/:id',
+        loadComponent: () => import('./demo/atelier/bonsortie/bonsortie.component')
+      },
+      {
         path: 'home/financier',
-        loadComponent: () => import('./demo/financier/home/home.component')
+        loadComponent: () => import('./demo/financier/statistique/statistique.component')
       },
       {
         path: 'home/financier/pieces',
@@ -104,11 +104,8 @@ const routes: Routes = [
       {
         path: 'financier/paiement',
         loadComponent: () => import('./demo/financier/liste-paiement/liste-paiement.component')
-      },
-      {
-        path: 'financier/statistique',
-        loadComponent: () => import('./demo/financier/statistique/statistique.component')
       }
+      
     ]
   },
   {

@@ -3,7 +3,7 @@ const { Router } = require("express"); // import router from express
 const Reparation = require("../models/reparation"); 
 const Car = require("../models/car"); 
 const db = require("../db/connection");
-
+const Paiement= require("../models/paiement")
 const router = Router();
 
 router.post("/add_reparation", async (req, res) => {
@@ -36,7 +36,6 @@ router.post("/add_reparation", async (req, res) => {
       res.status(400).json({ error });
     }
   });
-
 
   router.get("/all_reparation", async (req, res) => {
     try {
@@ -78,23 +77,48 @@ router.post("/add_reparation", async (req, res) => {
   router.get("/financier/statistique_hebdomadaire", async (req, res) =>{
     try {
 
-      // var startOfWeek = moment().startOf('week').toDate();
-      // var endOfWeek   = moment().endOf('week').toDate();
-
-      // var dateArray = [];
-      // var currentDate = moment(startOfWeek);
-      // var stopDate = moment(endOfWeek);
-      // while (currentDate <= stopDate) {
-      //     dateArray.push( moment(currentDate).format('YYYY-MM-DD') )
-      //     currentDate = moment(currentDate).add(1, 'days');
-      // }
-      Array.from(Array(7).keys()).map((idx) => {
+      const all_date=Array.from(Array(6).keys()).map((idx) => {
         const d = new Date(); d.setDate(d.getDate() - d.getDay() + idx);
-        console.log(d);
-      return d;
-     });
-     
+        return d;
+      });
+      const test={
+        datepaie:new Date("2023-01-29"),
+      }
+      var liste_date=[];
+      const paiement = await Paiement.find().populate(["Reparation"]);
+      
+      var value_rep=[];
+      for (let index = 0; index < paiement.length; index++) {
+          value_rep.push(paiement[index].Reparation);
+      }
+      var value_piece=[];
+      var repartion_test=[]; 
+      // console.log("yyyyy",value_rep);
+      const paie = await Paiement.find().populate(["Reparation"]);
+      var reparation = [];
+      for(var i=0;i<paie.length;i++){
+        for(var j=0; j<paie[i].Reparation.length;j++){
+          reparation.push(await Reparation.findById(paie[i].Reparation[j]).populate(["Piece"]));
+        }
+      }
 
+      var resultat=[];
+      if(paie.length>0){
+        for (let a = 0; a < paie.length; a++) {
+          console.log("day",all_date[a].getDay());
+          for (let i = 0; i < all_date.length; i++) {
+            if(new Date(paie[a].datepaie).getDay()==all_date[i].getDay()){
+              resultat.push({id:paie[a],jour:all_date[i].getDay()});
+              break;
+            }
+            if(new Date(paie[a].datepaie).getDay()!=all_date[i].getDay()){
+              resultat.push({id:'',jour:new Date(paie[a].datepaie).getDay()});
+              // break;
+            }
+          }
+        }
+        console.log("resultat",resultat);
+      }
     } catch (error) {
       console.log(error);
       res.status(400).json({ error });
@@ -123,7 +147,6 @@ router.post("/add_reparation", async (req, res) => {
       const somme_moyenne=somme_test/nombre_voiture.length;
       const final_moyenne=Math.floor(somme_moyenne/1000/60/60/24);
       console.log(final_moyenne);
-
       res.status(200).json({ status:200,final_moyenne});
 
     } catch (error) {

@@ -11,6 +11,7 @@
           <th>Quantité</th>
           <th>Avancement</th>
           <th>Actions</th>
+          <th>Bon de sortie</th>
         </tr>
       </thead>
       <tbody>
@@ -30,6 +31,11 @@
           <td>
             <a routerLink="/atelier/detail_reparation/{{ car._id }}">
               <button class="btn btn-primary" >Détails</button>
+            </a>
+          </td>
+          <td>
+            <a routerLink="/atelier/bon_de_sortie/{{ car._id }}">
+              <button class="btn btn-primary" >Voir</button>
             </a>
           </td>
         </tr>
